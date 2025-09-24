@@ -1,0 +1,506 @@
+// Pet Universe Database Schema
+// This schema defines all entities for the one-stop pet care application
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Management
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  phone       String?  @unique
+  firstName   String
+  lastName    String
+  avatar      String?
+  role        UserRole @default(CUSTOMER)
+  isVerified  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  address     Json?    // Flexible address structure
+  preferences Json?    // User preferences and settings
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  accounts         Account[]
+  sessions         Session[]
+  pets             Pet[]
+  orders           Order[]
+  reviews          Review[]
+  serviceProvider  ServiceProvider?
+  customerBookings Booking[]       @relation("CustomerBookings")
+  chatMessages     ChatMessage[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// Pet Profile Management
+model Pet {
+  id           String     @id @default(cuid())
+  name         String
+  species      String     // dog, cat, bird, etc.
+  breed        String
+  age          Int?
+  weight       Float?
+  gender       PetGender?
+  color        String?
+  photos       String[]   // Array of photo URLs
+  microchipId  String?    @unique
+  description  String?
+  isActive     Boolean    @default(true)
+  ownerId      String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  // Relationships
+  owner           User               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  healthRecords   HealthRecord[]
+  vaccinations    Vaccination[]
+  bookings        Booking[]
+  orderItems      OrderItem[]
+  breedingProfiles BreedingProfile[]
+  marketplaceListings MarketplaceListing[]
+
+  @@map("pets")
+}
+
+model HealthRecord {
+  id          String   @id @default(cuid())
+  petId       String
+  recordType  String   // checkup, illness, surgery, etc.
+  title       String
+  description String?
+  diagnosis   String?
+  treatment   String?
+  medications Json?    // Array of medications
+  veterinarian String?
+  clinicName  String?
+  attachments String[] // URLs to documents/images
+  recordDate  DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@map("health_records")
+}
+
+model Vaccination {
+  id           String    @id @default(cuid())
+  petId        String
+  vaccineName  String
+  vaccineType  String
+  manufacturer String?
+  batchNumber  String?
+  dateGiven    DateTime
+  nextDueDate  DateTime?
+  veterinarian String?
+  clinicName   String?
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@map("vaccinations")
+}
+
+// Service Providers
+model ServiceProvider {
+  id                String                @id @default(cuid())
+  userId            String                @unique
+  businessName      String
+  businessType      ServiceProviderType
+  description       String?
+  specializations   String[]              // Array of specializations
+  certifications    String[]              // Array of certification URLs
+  licenseNumber     String?
+  isVerified        Boolean               @default(false)
+  isActive          Boolean               @default(true)
+  averageRating     Float?                @default(0)
+  totalReviews      Int                   @default(0)
+  businessHours     Json?                 // Operating hours structure
+  serviceArea       Json?                 // Geographic service area
+  policies          Json?                 // Cancellation, refund policies
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+
+  // Relationships
+  user              User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  services          Service[]
+  bookings          Booking[]
+  availabilitySlots AvailabilitySlot[]
+  products          Product[]
+
+  @@map("service_providers")
+}
+
+model Service {
+  id                String          @id @default(cuid())
+  providerId        String
+  category          ServiceCategory
+  name              String
+  description       String?
+  duration          Int?            // Duration in minutes
+  price             Float
+  currency          String          @default("USD")
+  isActive          Boolean         @default(true)
+  tags              String[]        // Search tags
+  requirements      Json?           // Service requirements
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  // Relationships
+  provider     ServiceProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  bookings     Booking[]
+  orderItems   OrderItem[]
+
+  @@map("services")
+}
+
+model AvailabilitySlot {
+  id         String              @id @default(cuid())
+  providerId String
+  dayOfWeek  Int                 // 0-6 (Sunday-Saturday)
+  startTime  String              // HH:mm format
+  endTime    String              // HH:mm format
+  isActive   Boolean             @default(true)
+  createdAt  DateTime            @default(now())
+
+  provider ServiceProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("availability_slots")
+}
+
+// Booking System
+model Booking {
+  id               String        @id @default(cuid())
+  customerId       String
+  providerId       String
+  serviceId        String
+  petId            String?
+  scheduledDate    DateTime
+  scheduledTime    String        // HH:mm format
+  duration         Int?          // Duration in minutes
+  status           BookingStatus @default(PENDING)
+  totalAmount      Float
+  currency         String        @default("USD")
+  notes            String?
+  cancellationReason String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  // Relationships
+  customer User            @relation("CustomerBookings", fields: [customerId], references: [id], onDelete: Cascade)
+  service  Service         @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  pet      Pet?            @relation(fields: [petId], references: [id], onDelete: SetNull)
+  provider ServiceProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  payment  Payment?
+  review   Review?
+
+  @@map("bookings")
+}
+
+// Product & Order Management
+model Product {
+  id          String          @id @default(cuid())
+  providerId  String?
+  category    ProductCategory
+  name        String
+  description String?
+  brand       String?
+  images      String[]        // Array of image URLs
+  price       Float
+  currency    String          @default("USD")
+  stockQuantity Int           @default(0)
+  isActive    Boolean         @default(true)
+  tags        String[]        // Search tags
+  specifications Json?        // Product specifications
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  // Relationships
+  provider   ServiceProvider? @relation(fields: [providerId], references: [id], onDelete: SetNull)
+  orderItems OrderItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  customerId    String
+  orderNumber   String      @unique
+  status        OrderStatus @default(PENDING)
+  totalAmount   Float
+  currency      String      @default("USD")
+  shippingAddress Json?     // Shipping address structure
+  trackingNumber String?
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relationships
+  customer   User        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  orderItems OrderItem[]
+  payment    Payment?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String?
+  serviceId String?
+  petId     String?
+  quantity  Int    @default(1)
+  unitPrice Float
+  totalPrice Float
+  notes     String?
+
+  // Relationships
+  order   Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  service Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  pet     Pet?     @relation(fields: [petId], references: [id], onDelete: SetNull)
+
+  @@map("order_items")
+}
+
+// Payment System
+model Payment {
+  id              String        @id @default(cuid())
+  amount          Float
+  currency        String        @default("USD")
+  status          PaymentStatus @default(PENDING)
+  paymentMethod   String        // card, wallet, bank_transfer, etc.
+  stripePaymentId String?       @unique
+  transactionId   String?       @unique
+  orderId         String?       @unique
+  bookingId       String?       @unique
+  failureReason   String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  // Relationships
+  order   Order?   @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  booking Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@map("payments")
+}
+
+// Review & Rating System
+model Review {
+  id         String   @id @default(cuid())
+  customerId String
+  bookingId  String?  @unique
+  rating     Int      // 1-5 stars
+  title      String?
+  comment    String?
+  images     String[] // Array of image URLs
+  isVerified Boolean  @default(false)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relationships
+  customer User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  booking  Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@map("reviews")
+}
+
+// Communication System
+model ChatMessage {
+  id         String      @id @default(cuid())
+  senderId   String
+  receiverId String
+  content    String
+  messageType MessageType @default(TEXT)
+  attachments String[]   // URLs to files/images
+  isRead     Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+
+  // Relationships
+  sender   User @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@map("chat_messages")
+}
+
+// Breeding Services
+model BreedingProfile {
+  id            String        @id @default(cuid())
+  petId         String
+  isAvailable   Boolean       @default(true)
+  breedingType  BreedingType  // stud, breeding_female
+  studFee       Float?
+  description   String?
+  requirements  String?
+  healthTests   String[]      // Array of health test results
+  pedigree      String?       // Pedigree document URL
+  achievements  String[]      // Show achievements, titles
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relationships
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@map("breeding_profiles")
+}
+
+// Pet Marketplace
+model MarketplaceListing {
+  id          String         @id @default(cuid())
+  petId       String
+  listingType ListingType    // sale, adoption
+  price       Float?
+  description String?
+  isActive    Boolean        @default(true)
+  status      ListingStatus  @default(AVAILABLE)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relationships
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@map("marketplace_listings")
+}
+
+// Enums
+enum UserRole {
+  CUSTOMER
+  SERVICE_PROVIDER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum PetGender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+enum ServiceProviderType {
+  GROOMING
+  VETERINARY
+  FOOD_SUPPLIER
+  ACCESSORY_SUPPLIER
+  BREEDER
+  PET_SITTER
+  TRAINER
+  OTHER
+}
+
+enum ServiceCategory {
+  GROOMING
+  VETERINARY_CONSULTATION
+  VETERINARY_APPOINTMENT
+  EMERGENCY_CARE
+  PET_SITTING
+  TRAINING
+  BOARDING
+  WALKING
+  OTHER
+}
+
+enum ProductCategory {
+  FOOD
+  TREATS
+  TOYS
+  ACCESSORIES
+  HEALTH_SUPPLEMENTS
+  GROOMING_SUPPLIES
+  BEDDING
+  CARRIERS
+  OTHER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum MessageType {
+  TEXT
+  IMAGE
+  FILE
+  AUDIO
+  VIDEO
+}
+
+enum BreedingType {
+  STUD
+  BREEDING_FEMALE
+}
+
+enum ListingType {
+  SALE
+  ADOPTION
+}
+
+enum ListingStatus {
+  AVAILABLE
+  PENDING
+  SOLD
+  ADOPTED
+  WITHDRAWN
+}
