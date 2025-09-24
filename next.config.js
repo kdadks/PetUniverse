@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: ["@prisma/client"],
+  outputFileTracingRoot: process.cwd(),
   images: {
     domains: ['localhost', 'images.unsplash.com', 'via.placeholder.com'],
     dangerouslyAllowSVG: true,
@@ -13,8 +14,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
 }
 
 module.exports = nextConfig
