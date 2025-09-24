@@ -1,7 +1,5 @@
 [build]
   command = "npm run build"
-  # Explicitly set to override UI setting
-  publish = "."
 
 [build.environment]
   NODE_VERSION = "20"
