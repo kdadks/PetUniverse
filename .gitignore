@@ -46,8 +46,7 @@ pids
 coverage/
 
 # Prisma
-# Note: Keep schema.prisma but ignore generated client
-/src/generated/
+# The generated client is now in node_modules/@prisma/client
 
 # Temporary files
 *.tmp
