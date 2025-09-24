@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ["@prisma/client"],
-  },
+  serverExternalPackages: ["@prisma/client"],
   images: {
     domains: ['localhost', 'images.unsplash.com', 'via.placeholder.com'],
     dangerouslyAllowSVG: true,
@@ -15,8 +13,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Enable static exports for Netlify
-  output: 'export',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
 }
