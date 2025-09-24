@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
-  # Don't set publish directory - let the plugin handle it
+  # Explicitly set to override UI setting
+  publish = "."
 
 [build.environment]
   NODE_VERSION = "20"
@@ -8,9 +9,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  
-  [plugins.inputs]
-  # Let the plugin manage everything automatically
 
 # Static files
 [[headers]]
