@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles, Heart, Shield, Star } from 'lucide-react'
+import { Menu, X, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import CountrySelector from '@/components/CountrySelector'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -99,8 +100,13 @@ export default function GlossyHeader() {
             ))}
           </nav>
 
-          {/* Right section - Auth/CTA */}
+          {/* Right section - Currency + Auth/CTA */}
           <div className="flex items-center space-x-4">
+            {/* Country/Currency Selector */}
+            <div className="hidden md:block">
+              <CountrySelector />
+            </div>
+
             {status === 'loading' ? (
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse" />
             ) : session ? (
@@ -223,8 +229,15 @@ export default function GlossyHeader() {
                     </motion.div>
                   ))}
 
-                  {/* Mobile Auth Buttons */}
+                  {/* Mobile Currency Selector */}
                   <div className="pt-4 border-t border-white/20">
+                    <div className="px-4 py-3">
+                      <CountrySelector />
+                    </div>
+                  </div>
+
+                  {/* Mobile Auth Buttons */}
+                  <div className="pt-2 border-t border-white/20">
                     {session ? (
                       <div className="space-y-2">
                         <Link

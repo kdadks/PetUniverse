@@ -69,23 +69,23 @@ model Session {
   @@map("sessions")
 }
 
-// Pet Profile Management
+// Pet Profile Management (includes all animals: pets, livestock, farm animals, birds)
 model Pet {
-  id           String     @id @default(cuid())
+  id           String        @id @default(cuid())
   name         String
-  species      String     // dog, cat, bird, etc.
+  species      AnimalSpecies // dog, cat, cow, buffalo, etc.
   breed        String
   age          Int?
   weight       Float?
   gender       PetGender?
   color        String?
-  photos       String[]   // Array of photo URLs
-  microchipId  String?    @unique
+  photos       String[]      // Array of photo URLs
+  microchipId  String?       @unique
   description  String?
-  isActive     Boolean    @default(true)
+  isActive     Boolean       @default(true)
   ownerId      String
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   // Relationships
   owner           User               @relation(fields: [ownerId], references: [id], onDelete: Cascade)
@@ -174,6 +174,7 @@ model Service {
   id                String          @id @default(cuid())
   providerId        String
   category          ServiceCategory
+  animalTypes       AnimalSpecies[] // Which animals this service is available for
   name              String
   description       String?
   duration          Int?            // Duration in minutes
@@ -238,21 +239,22 @@ model Booking {
 
 // Product & Order Management
 model Product {
-  id          String          @id @default(cuid())
-  providerId  String?
-  category    ProductCategory
-  name        String
-  description String?
-  brand       String?
-  images      String[]        // Array of image URLs
-  price       Float
-  currency    String          @default("USD")
-  stockQuantity Int           @default(0)
-  isActive    Boolean         @default(true)
-  tags        String[]        // Search tags
-  specifications Json?        // Product specifications
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime        @updatedAt
+  id             String          @id @default(cuid())
+  providerId     String?
+  category       ProductCategory
+  animalTypes    AnimalSpecies[] // Which animals this product is suitable for
+  name           String
+  description    String?
+  brand          String?
+  images         String[]        // Array of image URLs
+  price          Float
+  currency       String          @default("USD")
+  stockQuantity  Int             @default(0)
+  isActive       Boolean         @default(true)
+  tags           String[]        // Search tags
+  specifications Json?           // Product specifications
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 
   // Relationships
   provider   ServiceProvider? @relation(fields: [providerId], references: [id], onDelete: SetNull)
@@ -409,6 +411,38 @@ enum UserRole {
   SUPER_ADMIN
 }
 
+enum AnimalSpecies {
+  // Traditional Pets
+  DOG
+  CAT
+  BIRD
+  FISH
+  RABBIT
+  HAMSTER
+  GUINEA_PIG
+
+  // Livestock & Farm Animals
+  COW
+  BUFFALO
+  CAMEL
+  GOAT
+  SHEEP
+  HORSE
+  OX
+  DONKEY
+
+  // Poultry & Birds
+  CHICKEN
+  DUCK
+  TURKEY
+  GOOSE
+  QUAIL
+  PIGEON
+
+  // Other
+  OTHER
+}
+
 enum PetGender {
   MALE
   FEMALE
@@ -423,10 +457,15 @@ enum ServiceProviderType {
   BREEDER
   PET_SITTER
   TRAINER
+  LIVESTOCK_VETERINARY
+  DAIRY_SUPPLIER
+  LIVESTOCK_FEED_SUPPLIER
+  FARM_EQUIPMENT_SUPPLIER
   OTHER
 }
 
 enum ServiceCategory {
+  // Pet Services
   GROOMING
   VETERINARY_CONSULTATION
   VETERINARY_APPOINTMENT
@@ -435,10 +474,23 @@ enum ServiceCategory {
   TRAINING
   BOARDING
   WALKING
+
+  // Livestock Services
+  LIVESTOCK_VETERINARY
+  BREEDING_SERVICES
+  ARTIFICIAL_INSEMINATION
+  VACCINATION
+  DEWORMING
+  HOOF_TRIMMING
+  MILK_TESTING
+  FEED_CONSULTATION
+  FARM_VISIT
+
   OTHER
 }
 
 enum ProductCategory {
+  // Pet Products
   FOOD
   TREATS
   TOYS
@@ -447,6 +499,21 @@ enum ProductCategory {
   GROOMING_SUPPLIES
   BEDDING
   CARRIERS
+
+  // Livestock Products
+  LIVESTOCK_FEED
+  CATTLE_FEED
+  POULTRY_FEED
+  MINERAL_SUPPLEMENTS
+  VETERINARY_MEDICINES
+  MILKING_EQUIPMENT
+  FARM_TOOLS
+  FENCING_SUPPLIES
+  SADDLES_TACK
+  HALTERS_LEADS
+  FEED_BUCKETS
+  WATER_TROUGHS
+
   OTHER
 }
 

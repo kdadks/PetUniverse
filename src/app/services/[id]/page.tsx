@@ -19,6 +19,7 @@ import {
   CheckCircle,
   Award
 } from 'lucide-react'
+import { useCurrency } from '@/lib/useCurrency'
 
 interface Service {
   id: string
@@ -52,6 +53,7 @@ export default function ServiceDetailsPage() {
   const params = useParams()
   const router = useRouter()
   const { data: session } = useSession()
+  const { formatPrice, isLoading: currencyLoading } = useCurrency()
   const [service, setService] = useState<Service | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [selectedDate, setSelectedDate] = useState('')
@@ -64,42 +66,337 @@ export default function ServiceDetailsPage() {
   const fetchServiceDetails = async () => {
     try {
       // Mock service details - replace with actual API
-      const mockService: Service = {
-        id: params.id as string,
-        name: 'Premium Dog Grooming',
-        category: 'GROOMING',
-        description: 'Complete professional grooming service for dogs of all sizes. Our experienced groomers provide full-service care including bathing, brushing, nail trimming, ear cleaning, and styling. We use only premium, pet-safe products and ensure your furry friend feels comfortable throughout the entire process.',
-        price: 75,
-        duration: 120,
-        provider: {
-          businessName: 'Pawsome Grooming Studio',
-          averageRating: 4.8,
-          totalReviews: 127,
-          isVerified: true,
-          user: {
-            firstName: 'Sarah',
-            lastName: 'Johnson'
+      const serviceId = params.id as string
+
+      const mockServices: Record<string, Service> = {
+        '1': {
+          id: '1',
+          name: 'Premium Dog Grooming',
+          category: 'GROOMING',
+          description: 'Complete professional grooming service for dogs of all sizes. Our experienced groomers provide full-service care including bathing, brushing, nail trimming, ear cleaning, and styling. We use only premium, pet-safe products and ensure your furry friend feels comfortable throughout the entire process.',
+          price: 75,
+          duration: 120,
+          provider: {
+            businessName: 'Pawsome Grooming Studio',
+            averageRating: 4.8,
+            totalReviews: 127,
+            isVerified: true,
+            user: { firstName: 'Sarah', lastName: 'Johnson' },
+            location: 'Downtown Pet District',
+            experience: '8 years of professional pet grooming',
+            specialties: ['Long-haired breeds', 'Sensitive skin care', 'Show dog preparation'],
+            contact: { phone: '(555) 123-4567', email: 'sarah@pawsomestudio.com' }
           },
-          location: 'Downtown Pet District',
-          experience: '8 years of professional pet grooming',
-          specialties: ['Long-haired breeds', 'Sensitive skin care', 'Show dog preparation'],
-          contact: {
-            phone: '(555) 123-4567',
-            email: 'sarah@pawsomestudio.com'
-          }
+          features: [
+            'Premium organic shampoos', 'Nail trimming and filing', 'Ear cleaning and inspection',
+            'Teeth brushing', 'Full coat brushing and de-shedding', 'Sanitary trim',
+            'Blow dry and styling', 'Complimentary nail polish'
+          ],
+          gallery: []
         },
-        features: [
-          'Premium organic shampoos',
-          'Nail trimming and filing',
-          'Ear cleaning and inspection',
-          'Teeth brushing',
-          'Full coat brushing and de-shedding',
-          'Sanitary trim',
-          'Blow dry and styling',
-          'Complimentary nail polish'
-        ],
-        gallery: []
+        '13': {
+          id: '13',
+          name: 'Cattle Veterinary Checkup',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Comprehensive health examination for cattle including physical assessment, disease screening, health certification, and preventive care recommendations. Our experienced large animal veterinarians provide thorough evaluations to ensure your cattle maintain optimal health and productivity.',
+          price: 200,
+          duration: 120,
+          provider: {
+            businessName: 'Farm Vet Services',
+            averageRating: 4.9,
+            totalReviews: 145,
+            isVerified: true,
+            user: { firstName: 'Dr. Robert', lastName: 'Miller' },
+            location: 'Rural Veterinary District',
+            experience: '15 years of large animal veterinary medicine',
+            specialties: ['Cattle health management', 'Disease prevention', 'Herd health programs', 'Reproduction management'],
+            contact: { phone: '(555) 234-5678', email: 'dr.miller@farmvet.com' }
+          },
+          features: [
+            'Complete physical examination',
+            'Disease screening and testing',
+            'Health certificate issuance',
+            'Nutritional assessment',
+            'Reproductive health check',
+            'Parasite screening',
+            'Vaccination status review',
+            'Treatment recommendations'
+          ],
+          gallery: []
+        },
+        '14': {
+          id: '14',
+          name: 'Horse Health & Wellness Visit',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Complete equine health check covering dental examination, hoof inspection, body condition scoring, and overall wellness assessment. Perfect for routine health maintenance or pre-purchase examinations.',
+          price: 250,
+          duration: 180,
+          provider: {
+            businessName: 'Equine Care Specialists',
+            averageRating: 4.8,
+            totalReviews: 98,
+            isVerified: true,
+            user: { firstName: 'Dr. Jennifer', lastName: 'Thompson' },
+            location: 'Equestrian Center Area',
+            experience: '12 years of equine veterinary practice',
+            specialties: ['Equine dentistry', 'Lameness evaluation', 'Performance horses', 'Geriatric horse care'],
+            contact: { phone: '(555) 345-6789', email: 'dr.thompson@equinecare.com' }
+          },
+          features: [
+            'Comprehensive physical exam',
+            'Dental examination and floating',
+            'Hoof health assessment',
+            'Body condition scoring',
+            'Joint and mobility evaluation',
+            'Respiratory system check',
+            'Digital pulse examination',
+            'Wellness recommendations'
+          ],
+          gallery: []
+        },
+        '15': {
+          id: '15',
+          name: 'Goat & Sheep Vaccination',
+          category: 'VACCINATION',
+          description: 'Standard vaccination protocol for goats and sheep including CDT (Clostridium perfringens types C & D and tetanus), deworming, and health assessment. Protects your herd from common diseases and parasites.',
+          price: 80,
+          duration: 60,
+          provider: {
+            businessName: 'Livestock Health Pro',
+            averageRating: 4.7,
+            totalReviews: 112,
+            isVerified: true,
+            user: { firstName: 'Dr. William', lastName: 'Harris' },
+            location: 'Small Ruminant Services',
+            experience: '10 years specializing in small ruminants',
+            specialties: ['Sheep health', 'Goat diseases', 'Herd management', 'Parasite control'],
+            contact: { phone: '(555) 456-7890', email: 'dr.harris@livestockhealth.com' }
+          },
+          features: [
+            'CDT vaccination administration',
+            'Comprehensive deworming protocol',
+            'Health status assessment',
+            'Body condition evaluation',
+            'Parasite screening',
+            'Vaccination record update',
+            'Next vaccination scheduling',
+            'Herd health consultation'
+          ],
+          gallery: []
+        },
+        '16': {
+          id: '16',
+          name: 'Cattle Breeding Consultation',
+          category: 'BREEDING_SERVICES',
+          description: 'Professional breeding guidance including genetic selection, breeding schedule planning, bull selection advice, and reproductive management strategies to improve your herd genetics and productivity.',
+          price: 350,
+          duration: 240,
+          provider: {
+            businessName: 'Premium Livestock Genetics',
+            averageRating: 4.9,
+            totalReviews: 76,
+            isVerified: true,
+            user: { firstName: 'James', lastName: 'Anderson' },
+            location: 'Genetics & Breeding Center',
+            experience: '20 years in livestock genetics and breeding',
+            specialties: ['Cattle genetics', 'Breeding program design', 'EPD analysis', 'Crossbreeding systems'],
+            contact: { phone: '(555) 567-8901', email: 'james@premiumgenetics.com' }
+          },
+          features: [
+            'Genetic evaluation of current herd',
+            'Breeding goal establishment',
+            'Bull selection criteria development',
+            'Breeding schedule optimization',
+            'EPD (Expected Progeny Difference) analysis',
+            'Crossbreeding recommendations',
+            'Record keeping system setup',
+            'Follow-up support included'
+          ],
+          gallery: []
+        },
+        '17': {
+          id: '17',
+          name: 'Artificial Insemination Service',
+          category: 'ARTIFICIAL_INSEMINATION',
+          description: 'Professional AI service for cattle, buffalo, and dairy animals using certified high-quality semen from superior genetics. Includes heat detection, optimal timing, and proper technique for maximum conception rates.',
+          price: 150,
+          duration: 90,
+          provider: {
+            businessName: 'Dairy Breeding Solutions',
+            averageRating: 4.8,
+            totalReviews: 134,
+            isVerified: true,
+            user: { firstName: 'Michael', lastName: 'Davis' },
+            location: 'Dairy Services Region',
+            experience: '18 years of AI technician experience',
+            specialties: ['Cattle AI', 'Buffalo breeding', 'Heat detection', 'Reproductive efficiency'],
+            contact: { phone: '(555) 678-9012', email: 'michael@dairybreeding.com' }
+          },
+          features: [
+            'Premium certified semen',
+            'Heat detection assistance',
+            'Optimal timing determination',
+            'Professional AI technique',
+            'Post-AI care instructions',
+            'Pregnancy check scheduling',
+            'Breeding records maintenance',
+            'Conception rate tracking'
+          ],
+          gallery: []
+        },
+        '18': {
+          id: '18',
+          name: 'Dairy Milk Quality Testing',
+          category: 'MILK_TESTING',
+          description: 'Complete milk analysis including fat content, protein levels, bacterial count, somatic cell count, and adulteration testing. Get detailed reports to ensure premium milk quality and compliance with standards.',
+          price: 120,
+          duration: 30,
+          provider: {
+            businessName: 'Dairy Lab Services',
+            averageRating: 4.6,
+            totalReviews: 89,
+            isVerified: true,
+            user: { firstName: 'Dr. Susan', lastName: 'White' },
+            location: 'Dairy Quality Lab',
+            experience: '14 years in dairy science and quality control',
+            specialties: ['Milk composition analysis', 'Quality standards', 'Lab diagnostics', 'Food safety'],
+            contact: { phone: '(555) 789-0123', email: 'dr.white@dairylab.com' }
+          },
+          features: [
+            'Fat percentage analysis',
+            'Protein content measurement',
+            'Total bacterial count',
+            'Somatic cell count (SCC)',
+            'Adulteration testing',
+            'Antibiotic residue screening',
+            'Detailed quality report',
+            'Recommendations for improvement'
+          ],
+          gallery: []
+        },
+        '19': {
+          id: '19',
+          name: 'Livestock Nutrition Consultation',
+          category: 'FEED_CONSULTATION',
+          description: 'Custom feed plan development for optimal animal health and productivity. Includes nutritional assessment, ration formulation, feed quality evaluation, and ongoing monitoring for best results.',
+          price: 180,
+          duration: 120,
+          provider: {
+            businessName: 'Farm Nutrition Experts',
+            averageRating: 4.7,
+            totalReviews: 67,
+            isVerified: true,
+            user: { firstName: 'Dr. Richard', lastName: 'Brown' },
+            location: 'Agricultural Nutrition Center',
+            experience: '16 years as livestock nutritionist',
+            specialties: ['Ration formulation', 'Feed analysis', 'Metabolic disorders', 'Growth optimization'],
+            contact: { phone: '(555) 890-1234', email: 'dr.brown@farmnutrition.com' }
+          },
+          features: [
+            'Complete nutritional assessment',
+            'Custom ration formulation',
+            'Feed quality evaluation',
+            'Cost-benefit analysis',
+            'Body condition scoring',
+            'Growth rate optimization',
+            'Supplement recommendations',
+            'Quarterly follow-up included'
+          ],
+          gallery: []
+        },
+        '20': {
+          id: '20',
+          name: 'Complete Farm Health Visit',
+          category: 'FARM_VISIT',
+          description: 'Comprehensive on-farm visit for herd health assessment, disease prevention planning, biosecurity evaluation, and overall farm management consultation. Ideal for maintaining healthy, productive livestock.',
+          price: 300,
+          duration: 240,
+          provider: {
+            businessName: 'Mobile Farm Veterinary',
+            averageRating: 4.9,
+            totalReviews: 156,
+            isVerified: true,
+            user: { firstName: 'Dr. Thomas', lastName: 'Wilson' },
+            location: 'Mobile Veterinary Services',
+            experience: '22 years of farm animal practice',
+            specialties: ['Herd health programs', 'Disease prevention', 'Biosecurity', 'Production medicine'],
+            contact: { phone: '(555) 901-2345', email: 'dr.wilson@mobilefarmvet.com' }
+          },
+          features: [
+            'Comprehensive herd examination',
+            'Disease screening and testing',
+            'Biosecurity assessment',
+            'Facility evaluation',
+            'Vaccination program review',
+            'Parasite control planning',
+            'Nutrition assessment',
+            'Written health report with recommendations'
+          ],
+          gallery: []
+        },
+        '21': {
+          id: '21',
+          name: 'Buffalo Health Management',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Specialized health care for water buffalo including vaccination, disease control, reproductive health, and general wellness. Our veterinarians have extensive experience with buffalo-specific health needs.',
+          price: 220,
+          duration: 150,
+          provider: {
+            businessName: 'Buffalo Care Center',
+            averageRating: 4.8,
+            totalReviews: 82,
+            isVerified: true,
+            user: { firstName: 'Dr. Maria', lastName: 'Rodriguez' },
+            location: 'Buffalo Health Specialists',
+            experience: '11 years specializing in buffalo health',
+            specialties: ['Buffalo diseases', 'Dairy buffalo', 'Reproduction', 'Preventive care'],
+            contact: { phone: '(555) 012-3456', email: 'dr.rodriguez@buffalocare.com' }
+          },
+          features: [
+            'Complete health examination',
+            'Buffalo-specific vaccinations',
+            'Reproductive health assessment',
+            'Mastitis prevention and treatment',
+            'Parasite control program',
+            'Nutritional counseling',
+            'Milk production optimization',
+            'Health certificate issuance'
+          ],
+          gallery: []
+        },
+        '22': {
+          id: '22',
+          name: 'Camel Health & Vaccination',
+          category: 'VACCINATION',
+          description: 'Specialized camel health services including routine vaccines (PPR, camel pox), parasite control, and health assessment. Our veterinarians understand the unique health requirements of camels in various climates.',
+          price: 280,
+          duration: 120,
+          provider: {
+            businessName: 'Desert Animal Care',
+            averageRating: 4.7,
+            totalReviews: 45,
+            isVerified: true,
+            user: { firstName: 'Dr. Ahmed', lastName: 'Hassan' },
+            location: 'Camel Health Services',
+            experience: '13 years of camel veterinary medicine',
+            specialties: ['Camel diseases', 'Desert livestock', 'Racing camels', 'Breeding management'],
+            contact: { phone: '(555) 123-4567', email: 'dr.hassan@desertanimal.com' }
+          },
+          features: [
+            'PPR vaccination',
+            'Camel pox immunization',
+            'Comprehensive parasite control',
+            'Health status evaluation',
+            'Skin condition assessment',
+            'Foot pad examination',
+            'Digestive health check',
+            'Climate-specific care advice'
+          ],
+          gallery: []
+        }
       }
+
+      const mockService = mockServices[serviceId] || mockServices['1']
       setService(mockService)
     } catch (error) {
       console.error('Error fetching service details:', error)
@@ -117,7 +414,7 @@ export default function ServiceDetailsPage() {
     alert('Booking functionality would be implemented here')
   }
 
-  if (isLoading) {
+  if (isLoading || currencyLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -180,7 +477,7 @@ export default function ServiceDetailsPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-gray-900">${service.price}</div>
+                  <div className="text-3xl font-bold text-gray-900">{formatPrice(service.price)}</div>
                   <button className="text-gray-400 hover:text-red-500 transition-colors duration-300 mt-2">
                     <Heart className="h-6 w-6" />
                   </button>
@@ -311,7 +608,7 @@ export default function ServiceDetailsPage() {
               <div className="border-t border-gray-200 pt-4 mb-6">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-600">Service Price</span>
-                  <span className="font-medium">${service.price}</span>
+                  <span className="font-medium">{formatPrice(service.price)}</span>
                 </div>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-600">Duration</span>
@@ -319,7 +616,7 @@ export default function ServiceDetailsPage() {
                 </div>
                 <div className="flex justify-between items-center text-lg font-bold border-t border-gray-200 pt-2">
                   <span>Total</span>
-                  <span>${service.price}</span>
+                  <span>{formatPrice(service.price)}</span>
                 </div>
               </div>
 

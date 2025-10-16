@@ -18,6 +18,7 @@ import {
   AlertCircle,
   Share2
 } from 'lucide-react'
+import { useCurrency } from '@/lib/useCurrency'
 
 interface MarketplaceListing {
   id: string
@@ -61,6 +62,7 @@ export default function MarketplaceDetailsPage() {
   const params = useParams()
   const router = useRouter()
   const { data: session } = useSession()
+  const { formatPrice, isLoading: currencyLoading } = useCurrency()
   const [listing, setListing] = useState<MarketplaceListing | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -72,45 +74,353 @@ export default function MarketplaceDetailsPage() {
   const fetchListingDetails = async () => {
     try {
       // Mock listing details - replace with actual API
-      const mockListing: MarketplaceListing = {
-        id: params.id as string,
-        pet: {
-          id: 'pet-1',
-          name: 'Luna',
-          species: 'cat',
-          breed: 'Persian',
-          age: 2,
-          gender: 'FEMALE',
-          color: 'White',
-          weight: '8 lbs',
-          photos: [],
-          description: 'Luna is a beautiful, gentle Persian cat with the softest white fur you\'ve ever felt. She loves to be petted and will purr contentedly in your lap for hours. She\'s great with children and gets along well with other cats.',
-          temperament: ['Gentle', 'Affectionate', 'Calm', 'Social'],
-          healthRecords: [],
-          vaccinations: [
-            { vaccine: 'FVRCP', dateGiven: '2024-01-15', nextDue: '2025-01-15' },
-            { vaccine: 'Rabies', dateGiven: '2024-01-15', nextDue: '2027-01-15' }
-          ],
-          microchipped: true,
-          spayedNeutered: true
+      const listingId = params.id as string
+
+      const mockListings: Record<string, MarketplaceListing> = {
+        '1': {
+          id: '1',
+          pet: {
+            id: 'pet-1',
+            name: 'Luna',
+            species: 'CAT',
+            breed: 'Persian',
+            age: 2,
+            gender: 'FEMALE',
+            color: 'White',
+            weight: '8 lbs',
+            photos: [],
+            description: 'Luna is a beautiful, gentle Persian cat with the softest white fur you\'ve ever felt. She loves to be petted and will purr contentedly in your lap for hours. She\'s great with children and gets along well with other cats.',
+            temperament: ['Gentle', 'Affectionate', 'Calm', 'Social'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'FVRCP', dateGiven: '2024-01-15', nextDue: '2025-01-15' },
+              { vaccine: 'Rabies', dateGiven: '2024-01-15', nextDue: '2027-01-15' }
+            ],
+            microchipped: true,
+            spayedNeutered: true
+          },
+          listingType: 'ADOPTION',
+          description: 'Luna is looking for a loving forever home where she can be the center of attention. She would do best in a quiet household with gentle children or adults who can appreciate her sweet, calm nature.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-10',
+          location: 'San Francisco, CA',
+          owner: {
+            firstName: 'Sarah',
+            lastName: 'M.',
+            email: 'sarah.m@email.com',
+            phone: '(555) 123-4567',
+            isVerified: true,
+            memberSince: '2023-05-15',
+            totalListings: 3
+          },
+          rehomingReason: 'Moving to apartment that doesn\'t allow pets',
+          specialNeeds: []
         },
-        listingType: 'ADOPTION',
-        description: 'Luna is looking for a loving forever home where she can be the center of attention. She would do best in a quiet household with gentle children or adults who can appreciate her sweet, calm nature.',
-        status: 'AVAILABLE',
-        createdAt: '2024-01-10',
-        location: 'San Francisco, CA',
-        owner: {
-          firstName: 'Sarah',
-          lastName: 'M.',
-          email: 'sarah.m@email.com',
-          phone: '(555) 123-4567',
-          isVerified: true,
-          memberSince: '2023-05-15',
-          totalListings: 3
+        '13': {
+          id: '13',
+          pet: {
+            id: 'pet-13',
+            name: 'Daisy',
+            species: 'COW',
+            breed: 'Holstein',
+            age: 3,
+            gender: 'FEMALE',
+            color: 'Black and White',
+            weight: '1200 lbs',
+            photos: [],
+            description: 'Daisy is a healthy, productive Holstein dairy cow with excellent milk production. She has a gentle temperament and is easy to handle. Recently freshened and currently in peak production. Great for family dairy farms or homesteaders.',
+            temperament: ['Gentle', 'Calm', 'Easy to handle', 'Good milker'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'IBR-BVD', dateGiven: '2024-09-15', nextDue: '2025-09-15' },
+              { vaccine: 'Clostridial', dateGiven: '2024-09-15', nextDue: '2025-09-15' }
+            ],
+            microchipped: true,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 2800,
+          description: 'Daisy is an excellent dairy cow with proven milk production of 8 gallons per day. She is healthy, well-cared for, and comes with complete health records. Perfect for a small dairy operation or homestead.',
+          status: 'AVAILABLE',
+          createdAt: '2024-09-20',
+          location: 'Lancaster, PA',
+          owner: {
+            firstName: 'John',
+            lastName: 'Miller',
+            email: 'john.miller@farm.com',
+            phone: '(555) 234-5678',
+            isVerified: true,
+            memberSince: '2021-03-10',
+            totalListings: 12
+          }
         },
-        rehomingReason: 'Moving to apartment that doesn\'t allow pets',
-        specialNeeds: []
+        '14': {
+          id: '14',
+          pet: {
+            id: 'pet-14',
+            name: 'Thunder',
+            species: 'HORSE',
+            breed: 'Arabian',
+            age: 5,
+            gender: 'MALE',
+            color: 'Bay',
+            weight: '900 lbs',
+            photos: [],
+            description: 'Thunder is a magnificent Arabian gelding with excellent confirmation and athletic ability. Well-trained for both English and Western riding. Great on trails and in the arena. Very responsive and willing to please.',
+            temperament: ['Athletic', 'Responsive', 'Gentle', 'Intelligent'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'Rabies', dateGiven: '2024-08-01', nextDue: '2025-08-01' },
+              { vaccine: 'EEE/WEE', dateGiven: '2024-08-01', nextDue: '2025-08-01' },
+              { vaccine: 'West Nile', dateGiven: '2024-08-01', nextDue: '2025-08-01' }
+            ],
+            microchipped: true,
+            spayedNeutered: true
+          },
+          listingType: 'SALE',
+          price: 8500,
+          description: 'Thunder is a beautiful, well-trained Arabian gelding perfect for an intermediate to advanced rider. He has excellent ground manners, loads well, and is great for trail riding or show. Current on all vaccinations and farrier work.',
+          status: 'AVAILABLE',
+          createdAt: '2024-09-25',
+          location: 'Lexington, KY',
+          owner: {
+            firstName: 'Emily',
+            lastName: 'Thompson',
+            email: 'emily.t@equestrian.com',
+            phone: '(555) 345-6789',
+            isVerified: true,
+            memberSince: '2020-07-18',
+            totalListings: 8
+          }
+        },
+        '15': {
+          id: '15',
+          pet: {
+            id: 'pet-15',
+            name: 'Buttercup',
+            species: 'GOAT',
+            breed: 'Nubian',
+            age: 2,
+            gender: 'FEMALE',
+            color: 'Brown and white',
+            weight: '150 lbs',
+            photos: [],
+            description: 'Buttercup is a sweet Nubian doe in excellent health. She is friendly, enjoys human interaction, and is great with children. Currently not pregnant but has been a good mother in the past. Excellent milk producer with high butterfat content.',
+            temperament: ['Friendly', 'Gentle', 'Social', 'Good mother'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'CDT', dateGiven: '2024-09-10', nextDue: '2025-09-10' }
+            ],
+            microchipped: false,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 450,
+          description: 'Buttercup is a wonderful dairy goat for a small homestead or hobby farm. She is healthy, produces excellent milk, and has a very sweet disposition. Great for families looking to add a milk goat to their farm.',
+          status: 'AVAILABLE',
+          createdAt: '2024-10-01',
+          location: 'Austin, TX',
+          owner: {
+            firstName: 'Maria',
+            lastName: 'Garcia',
+            email: 'maria.garcia@homestead.com',
+            phone: '(555) 456-7890',
+            isVerified: true,
+            memberSince: '2022-01-05',
+            totalListings: 6
+          }
+        },
+        '16': {
+          id: '16',
+          pet: {
+            id: 'pet-16',
+            name: 'Snowball',
+            species: 'SHEEP',
+            breed: 'Merino',
+            age: 1,
+            gender: 'FEMALE',
+            color: 'White',
+            weight: '120 lbs',
+            photos: [],
+            description: 'Snowball is a beautiful young Merino ewe with exceptional wool quality. She has a gentle disposition and is easy to handle. Perfect for wool production or breeding. She has excellent genetics from award-winning bloodlines.',
+            temperament: ['Gentle', 'Calm', 'Docile', 'Flock-oriented'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'CDT', dateGiven: '2024-08-15', nextDue: '2025-08-15' }
+            ],
+            microchipped: false,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 380,
+          description: 'Snowball is an excellent Merino ewe with premium wool genetics. She is healthy, well-socialized, and perfect for adding quality genetics to your flock or starting a fiber operation.',
+          status: 'AVAILABLE',
+          createdAt: '2024-09-18',
+          location: 'Bozeman, MT',
+          owner: {
+            firstName: 'David',
+            lastName: 'Anderson',
+            email: 'david.anderson@ranch.com',
+            phone: '(555) 567-8901',
+            isVerified: true,
+            memberSince: '2019-11-20',
+            totalListings: 15
+          }
+        },
+        '17': {
+          id: '17',
+          pet: {
+            id: 'pet-17',
+            name: 'Duke',
+            species: 'OX',
+            breed: 'Devon',
+            age: 4,
+            gender: 'MALE',
+            color: 'Red',
+            weight: '1800 lbs',
+            photos: [],
+            description: 'Duke is a well-trained working ox with experience in logging and farm work. He is strong, reliable, and responds well to verbal commands. Great for traditional farming methods or educational demonstrations.',
+            temperament: ['Strong', 'Reliable', 'Well-trained', 'Calm'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'Clostridial', dateGiven: '2024-07-20', nextDue: '2025-07-20' }
+            ],
+            microchipped: false,
+            spayedNeutered: true
+          },
+          listingType: 'SALE',
+          price: 3200,
+          description: 'Duke is an exceptional working ox with years of training and experience. He is well-mannered, strong, and perfect for sustainable farming operations, historical demonstrations, or logging work.',
+          status: 'AVAILABLE',
+          createdAt: '2024-09-05',
+          location: 'Burlington, VT',
+          owner: {
+            firstName: 'Robert',
+            lastName: 'Brown',
+            email: 'robert.brown@sustainablefarm.com',
+            phone: '(555) 678-9012',
+            isVerified: true,
+            memberSince: '2018-05-12',
+            totalListings: 10
+          }
+        },
+        '18': {
+          id: '18',
+          pet: {
+            id: 'pet-18',
+            name: 'Bella',
+            species: 'BUFFALO',
+            breed: 'Water Buffalo',
+            age: 5,
+            gender: 'FEMALE',
+            color: 'Dark Gray',
+            weight: '1500 lbs',
+            photos: [],
+            description: 'Bella is a productive water buffalo with excellent milk production. She is gentle, easy to milk, and produces rich, creamy milk perfect for cheese making. She is healthy and has a calm temperament around people.',
+            temperament: ['Gentle', 'Productive', 'Calm', 'Easy to handle'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'FMD', dateGiven: '2024-06-10', nextDue: '2025-06-10' },
+              { vaccine: 'HS', dateGiven: '2024-06-10', nextDue: '2025-06-10' }
+            ],
+            microchipped: true,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 4200,
+          description: 'Bella is an excellent milking buffalo producing 6-8 gallons of rich milk daily. Perfect for artisan cheese production or a sustainable dairy operation. She is healthy, well-cared for, and comes with complete health records.',
+          status: 'AVAILABLE',
+          createdAt: '2024-09-28',
+          location: 'Miami, FL',
+          owner: {
+            firstName: 'Carlos',
+            lastName: 'Rodriguez',
+            email: 'carlos.rodriguez@dairy.com',
+            phone: '(555) 789-0123',
+            isVerified: true,
+            memberSince: '2020-09-03',
+            totalListings: 9
+          }
+        },
+        '19': {
+          id: '19',
+          pet: {
+            id: 'pet-19',
+            name: 'Sultan',
+            species: 'CAMEL',
+            breed: 'Dromedary',
+            age: 6,
+            gender: 'MALE',
+            color: 'Light Brown',
+            weight: '1100 lbs',
+            photos: [],
+            description: 'Sultan is a well-trained dromedary camel suitable for riding, tourism, or breeding. He has a calm temperament, is accustomed to people, and has experience giving rides to children and adults. He is healthy and well-adapted to various climates.',
+            temperament: ['Calm', 'Well-trained', 'People-friendly', 'Reliable'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'PPR', dateGiven: '2024-05-15', nextDue: '2025-05-15' },
+              { vaccine: 'Camel Pox', dateGiven: '2024-05-15', nextDue: '2025-05-15' }
+            ],
+            microchipped: true,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 6500,
+          description: 'Sultan is a magnificent dromedary camel perfect for tourism operations, educational programs, or breeding. He is well-trained, healthy, and has a gentle disposition making him suitable for various activities.',
+          status: 'AVAILABLE',
+          createdAt: '2024-10-05',
+          location: 'Phoenix, AZ',
+          owner: {
+            firstName: 'Ahmed',
+            lastName: 'Hassan',
+            email: 'ahmed.hassan@camelrides.com',
+            phone: '(555) 890-1234',
+            isVerified: true,
+            memberSince: '2019-02-28',
+            totalListings: 7
+          }
+        },
+        '20': {
+          id: '20',
+          pet: {
+            id: 'pet-20',
+            name: 'Penny',
+            species: 'CHICKEN',
+            breed: 'Rhode Island Red',
+            age: 1,
+            gender: 'FEMALE',
+            color: 'Red-brown',
+            weight: '6.5 lbs',
+            photos: [],
+            description: 'Penny is an excellent laying hen producing 5-6 large brown eggs per week. She is healthy, friendly, and gets along well with other chickens. Great addition to any backyard flock.',
+            temperament: ['Friendly', 'Productive', 'Calm', 'Social'],
+            healthRecords: [],
+            vaccinations: [
+              { vaccine: 'Newcastle Disease', dateGiven: '2024-07-01', nextDue: '2025-07-01' },
+              { vaccine: 'Marek\'s Disease', dateGiven: '2024-01-15', nextDue: 'Lifetime' }
+            ],
+            microchipped: false,
+            spayedNeutered: false
+          },
+          listingType: 'SALE',
+          price: 25,
+          description: 'Penny is a wonderful laying hen perfect for backyard egg production. She is healthy, friendly, and a consistent layer of large brown eggs. Great temperament around children and other chickens.',
+          status: 'AVAILABLE',
+          createdAt: '2024-10-08',
+          location: 'Portland, OR',
+          owner: {
+            firstName: 'Lisa',
+            lastName: 'Green',
+            email: 'lisa.green@homestead.com',
+            phone: '(555) 901-2345',
+            isVerified: true,
+            memberSince: '2023-04-10',
+            totalListings: 4
+          }
+        }
       }
+
+      const mockListing = mockListings[listingId] || mockListings['1']
       setListing(mockListing)
     } catch (error) {
       console.error('Error fetching listing details:', error)
@@ -128,7 +438,7 @@ export default function MarketplaceDetailsPage() {
     alert('Contact functionality would be implemented here')
   }
 
-  if (isLoading) {
+  if (isLoading || currencyLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -177,11 +487,21 @@ export default function MarketplaceDetailsPage() {
             >
               <div className="h-96 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center relative">
                 <div className="text-8xl">
-                  {listing.pet.species === 'cat' ? '🐱' :
-                   listing.pet.species === 'dog' ? '🐕' :
-                   listing.pet.species === 'fish' ? '🐠' :
-                   listing.pet.species === 'bird' ? '🐦' :
-                   listing.pet.species === 'rabbit' ? '🐰' : '🐾'}
+                  {listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
+                   listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
+                   listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
+                   listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
+                   listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
+                   listing.pet.species === 'COW' ? '🐄' :
+                   listing.pet.species === 'HORSE' ? '🐴' :
+                   listing.pet.species === 'GOAT' ? '🐐' :
+                   listing.pet.species === 'SHEEP' ? '🐑' :
+                   listing.pet.species === 'OX' ? '🐂' :
+                   listing.pet.species === 'BUFFALO' ? '🐃' :
+                   listing.pet.species === 'CAMEL' ? '🐪' :
+                   listing.pet.species === 'CHICKEN' ? '🐔' :
+                   listing.pet.species === 'DUCK' ? '🦆' :
+                   listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
                 </div>
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -227,7 +547,7 @@ export default function MarketplaceDetailsPage() {
                 </div>
                 {listing.price && (
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-gray-900">${listing.price}</div>
+                    <div className="text-3xl font-bold text-gray-900">{formatPrice(listing.price)}</div>
                   </div>
                 )}
               </div>

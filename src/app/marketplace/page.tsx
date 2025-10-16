@@ -5,17 +5,12 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   Search,
-  MapPin,
-  Filter,
   Heart,
-  Star,
   Shield,
-  DollarSign,
   Calendar,
-  User,
-  Phone,
-  Mail
+  User
 } from 'lucide-react'
+import { useCurrency } from '@/lib/useCurrency'
 
 interface MarketplaceListing {
   id: string
@@ -53,15 +48,29 @@ const listingTypes = [
 
 const species = [
   { id: 'ALL', name: 'All Pets' },
-  { id: 'dog', name: 'Dogs' },
-  { id: 'cat', name: 'Cats' },
-  { id: 'bird', name: 'Birds' },
-  { id: 'rabbit', name: 'Rabbits' },
-  { id: 'fish', name: 'Fish' },
-  { id: 'other', name: 'Other' },
+  // Traditional Pets
+  { id: 'DOG', name: 'Dogs' },
+  { id: 'CAT', name: 'Cats' },
+  { id: 'BIRD', name: 'Birds' },
+  { id: 'RABBIT', name: 'Rabbits' },
+  { id: 'FISH', name: 'Fish' },
+  // Livestock & Farm Animals
+  { id: 'COW', name: 'Cows' },
+  { id: 'BUFFALO', name: 'Buffalo' },
+  { id: 'CAMEL', name: 'Camels' },
+  { id: 'GOAT', name: 'Goats' },
+  { id: 'SHEEP', name: 'Sheep' },
+  { id: 'HORSE', name: 'Horses' },
+  { id: 'OX', name: 'Oxen' },
+  // Poultry
+  { id: 'CHICKEN', name: 'Chickens' },
+  { id: 'DUCK', name: 'Ducks' },
+  { id: 'TURKEY', name: 'Turkeys' },
+  { id: 'OTHER', name: 'Other' },
 ]
 
 export default function MarketplacePage() {
+  const { formatPrice, isLoading: currencyLoading } = useCurrency()
   const [listings, setListings] = useState<MarketplaceListing[]>([])
   const [filteredListings, setFilteredListings] = useState<MarketplaceListing[]>([])
   const [selectedType, setSelectedType] = useState('ALL')
@@ -402,6 +411,223 @@ export default function MarketplacePage() {
             email: 'info@animalshelter.org',
             isVerified: true
           }
+        },
+        // Livestock Listings
+        {
+          id: '13',
+          pet: {
+            id: 'pet-13',
+            name: 'Daisy',
+            species: 'COW',
+            breed: 'Holstein',
+            age: 3,
+            gender: 'FEMALE',
+            color: 'Black and White',
+            photos: [],
+            description: 'Healthy dairy cow with excellent milk production',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 2800,
+          description: 'Prime Holstein dairy cow, producing 25 liters/day. Fully vaccinated, excellent health records.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-15',
+          owner: {
+            firstName: 'Green Valley',
+            lastName: 'Dairy Farm',
+            email: 'sales@greenvalleydairy.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '14',
+          pet: {
+            id: 'pet-14',
+            name: 'Thunder',
+            species: 'HORSE',
+            breed: 'Arabian',
+            age: 5,
+            gender: 'MALE',
+            color: 'Chestnut',
+            photos: [],
+            description: 'Beautiful Arabian stallion, well-trained',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 8500,
+          description: 'Magnificent Arabian horse, excellent bloodline, trained for riding and competition.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-14',
+          owner: {
+            firstName: 'Sunset',
+            lastName: 'Equestrian Center',
+            email: 'info@sunsetequestrian.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '15',
+          pet: {
+            id: 'pet-15',
+            name: 'Bella',
+            species: 'GOAT',
+            breed: 'Boer',
+            age: 2,
+            gender: 'FEMALE',
+            color: 'White with Brown',
+            photos: [],
+            description: 'Productive Boer goat for breeding',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 450,
+          description: 'Healthy Boer goat, excellent for meat production and breeding. Good temperament.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-13',
+          owner: {
+            firstName: 'Happy Hills',
+            lastName: 'Goat Farm',
+            email: 'contact@happyhillsgoats.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '16',
+          pet: {
+            id: 'pet-16',
+            name: 'Rocky',
+            species: 'BUFFALO',
+            breed: 'Murrah',
+            age: 4,
+            gender: 'MALE',
+            color: 'Black',
+            photos: [],
+            description: 'Strong water buffalo for dairy farming',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 3500,
+          description: 'Murrah buffalo bull, excellent genetics, disease-free with complete vaccination records.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-12',
+          owner: {
+            firstName: 'River',
+            lastName: 'Buffalo Ranch',
+            email: 'sales@riverbuffalo.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '17',
+          pet: {
+            id: 'pet-17',
+            name: 'Woolly',
+            species: 'SHEEP',
+            breed: 'Merino',
+            age: 3,
+            gender: 'FEMALE',
+            color: 'White',
+            photos: [],
+            description: 'Premium Merino sheep with fine wool',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 600,
+          description: 'High-quality Merino sheep producing excellent wool. Great for breeding program.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-11',
+          owner: {
+            firstName: 'Mountain View',
+            lastName: 'Sheep Farm',
+            email: 'info@mountainviewsheep.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '18',
+          pet: {
+            id: 'pet-18',
+            name: 'Sahara',
+            species: 'CAMEL',
+            breed: 'Dromedary',
+            age: 6,
+            gender: 'FEMALE',
+            color: 'Tan',
+            photos: [],
+            description: 'Gentle dromedary camel, well-trained',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 5500,
+          description: 'Well-trained dromedary camel, perfect for tourism or breeding. Very gentle with people.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-10',
+          owner: {
+            firstName: 'Desert',
+            lastName: 'Camel Ranch',
+            email: 'sales@desertcamels.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '19',
+          pet: {
+            id: 'pet-19',
+            name: 'Buddy',
+            species: 'OX',
+            breed: 'Gyr',
+            age: 5,
+            gender: 'MALE',
+            color: 'Gray',
+            photos: [],
+            description: 'Strong working ox, well-trained',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 2200,
+          description: 'Reliable working ox, excellent for farm work. Well-trained and healthy.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-09',
+          owner: {
+            firstName: 'Heritage',
+            lastName: 'Farm',
+            email: 'contact@heritagefarm.com',
+            isVerified: true
+          }
+        },
+        {
+          id: '20',
+          pet: {
+            id: 'pet-20',
+            name: 'Clucky',
+            species: 'CHICKEN',
+            breed: 'Rhode Island Red',
+            age: 1,
+            gender: 'FEMALE',
+            color: 'Red Brown',
+            photos: [],
+            description: 'Excellent egg-laying hen',
+            healthRecords: [],
+            vaccinations: []
+          },
+          listingType: 'SALE',
+          price: 35,
+          description: 'Productive Rhode Island Red hen, lays 5-6 eggs per week. Healthy and vaccinated.',
+          status: 'AVAILABLE',
+          createdAt: '2024-01-08',
+          owner: {
+            firstName: 'Barnyard',
+            lastName: 'Poultry',
+            email: 'sales@barnyardpoultry.com',
+            isVerified: true
+          }
         }
       ]
       setListings(mockListings)
@@ -447,7 +673,7 @@ export default function MarketplacePage() {
     setFilteredListings(filtered)
   }
 
-  if (isLoading) {
+  if (isLoading || currencyLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -486,7 +712,7 @@ export default function MarketplacePage() {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <input
                     type="text"
-                    placeholder="Search by name, breed, or description..."
+                    placeholder="Search pets, livestock, farm animals..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -575,7 +801,7 @@ export default function MarketplacePage() {
               <div>
                 <h2 className="text-2xl font-bold mb-2">Find Your Perfect Companion</h2>
                 <p className="text-blue-100">
-                  Browse verified pets from trusted breeders and shelters. Every pet comes with health records and certification.
+                  Browse verified pets from trusted breeders, farms, and shelters. Every pet comes with health records and certification.
                 </p>
               </div>
               <div className="hidden md:block">
@@ -597,11 +823,21 @@ export default function MarketplacePage() {
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
                     <div className="text-6xl">
-                      {listing.pet.species === 'dog' ? '🐕' :
-                       listing.pet.species === 'cat' ? '🐱' :
-                       listing.pet.species === 'bird' ? '🐦' :
-                       listing.pet.species === 'rabbit' ? '🐰' :
-                       listing.pet.species === 'fish' ? '🐠' : '🐾'}
+                      {listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
+                       listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
+                       listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
+                       listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
+                       listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
+                       listing.pet.species === 'COW' ? '🐄' :
+                       listing.pet.species === 'BUFFALO' ? '🐃' :
+                       listing.pet.species === 'CAMEL' ? '🐫' :
+                       listing.pet.species === 'GOAT' ? '🐐' :
+                       listing.pet.species === 'SHEEP' ? '🐑' :
+                       listing.pet.species === 'HORSE' ? '🐴' :
+                       listing.pet.species === 'OX' ? '🐂' :
+                       listing.pet.species === 'CHICKEN' ? '🐔' :
+                       listing.pet.species === 'DUCK' ? '🦆' :
+                       listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
                     </div>
                   </div>
                   <div className="absolute top-4 left-4">
@@ -630,7 +866,7 @@ export default function MarketplacePage() {
                     </div>
                     {listing.price && (
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-gray-900">${listing.price}</div>
+                        <div className="text-2xl font-bold text-gray-900">{formatPrice(listing.price)}</div>
                       </div>
                     )}
                   </div>

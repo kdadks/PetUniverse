@@ -15,6 +15,7 @@ import {
   Plus,
   Minus
 } from 'lucide-react'
+import { useCurrency } from '@/lib/useCurrency'
 
 interface Product {
   id: string
@@ -34,6 +35,7 @@ interface Product {
 
 const productCategories = [
   { id: 'ALL', name: 'All Products', icon: Package },
+  // Pet Products
   { id: 'FOOD', name: 'Pet Food', icon: '🍖' },
   { id: 'TREATS', name: 'Treats', icon: '🦴' },
   { id: 'TOYS', name: 'Toys', icon: '🎾' },
@@ -42,9 +44,20 @@ const productCategories = [
   { id: 'GROOMING_SUPPLIES', name: 'Grooming', icon: '✂️' },
   { id: 'BEDDING', name: 'Bedding', icon: '🛏️' },
   { id: 'CARRIERS', name: 'Carriers', icon: '👜' },
+  // Livestock Products
+  { id: 'LIVESTOCK_FEED', name: 'Livestock Feed', icon: '🌾' },
+  { id: 'CATTLE_FEED', name: 'Cattle Feed', icon: '🐄' },
+  { id: 'POULTRY_FEED', name: 'Poultry Feed', icon: '🐔' },
+  { id: 'MINERAL_SUPPLEMENTS', name: 'Mineral Supplements', icon: '⚡' },
+  { id: 'VETERINARY_MEDICINES', name: 'Vet Medicines', icon: '💉' },
+  { id: 'MILKING_EQUIPMENT', name: 'Milking Equipment', icon: '🥛' },
+  { id: 'FARM_TOOLS', name: 'Farm Tools', icon: '🔧' },
+  { id: 'SADDLES_TACK', name: 'Saddles & Tack', icon: '🐴' },
+  { id: 'HALTERS_LEADS', name: 'Halters & Leads', icon: '🪢' },
 ]
 
 export default function ProductsPage() {
+  const { formatPrice, isLoading: currencyLoading } = useCurrency()
   const [products, setProducts] = useState<Product[]>([])
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState('ALL')
@@ -335,6 +348,157 @@ export default function ProductsPage() {
           specifications: { pills: 60, type: 'Chewable tablets' },
           tags: ['joint-health', 'glucosamine', 'senior-dogs'],
           isActive: true
+        },
+        // Livestock Products
+        {
+          id: '19',
+          name: 'Premium Cattle Feed - 50 lbs',
+          category: 'CATTLE_FEED',
+          description: 'High-protein cattle feed with balanced nutrition for optimal growth and milk production.',
+          brand: 'FarmGold',
+          images: [],
+          price: 45.99,
+          stockQuantity: 200,
+          averageRating: 4.8,
+          totalReviews: 156,
+          specifications: { weight: '50 lbs', protein: '16%', fiber: '12%' },
+          tags: ['cattle', 'dairy', 'high-protein'],
+          isActive: true
+        },
+        {
+          id: '20',
+          name: 'Poultry Layer Feed - 40 lbs',
+          category: 'POULTRY_FEED',
+          description: 'Complete nutrition for laying hens, promotes strong shells and consistent egg production.',
+          brand: 'ChickenChoice',
+          images: [],
+          price: 32.99,
+          stockQuantity: 180,
+          averageRating: 4.7,
+          totalReviews: 134,
+          specifications: { weight: '40 lbs', protein: '18%', calcium: '4%' },
+          tags: ['poultry', 'layers', 'eggs'],
+          isActive: true
+        },
+        {
+          id: '21',
+          name: 'Livestock Mineral Supplement',
+          category: 'MINERAL_SUPPLEMENTS',
+          description: 'Essential minerals and vitamins for cattle, goats, and sheep health.',
+          brand: 'MineralPro',
+          images: [],
+          price: 58.99,
+          stockQuantity: 95,
+          averageRating: 4.9,
+          totalReviews: 89,
+          specifications: { weight: '25 lbs', type: 'Loose mineral' },
+          tags: ['minerals', 'vitamins', 'livestock'],
+          isActive: true
+        },
+        {
+          id: '22',
+          name: 'Automatic Milking Machine',
+          category: 'MILKING_EQUIPMENT',
+          description: 'Efficient portable milking machine for cows, goats, and sheep. Easy to clean.',
+          brand: 'DairyTech',
+          images: [],
+          price: 189.99,
+          stockQuantity: 25,
+          averageRating: 4.6,
+          totalReviews: 67,
+          specifications: { capacity: '25L', power: 'Electric', warranty: '2 years' },
+          tags: ['milking', 'dairy', 'equipment'],
+          isActive: true
+        },
+        {
+          id: '23',
+          name: 'Horse Saddle - Western Style',
+          category: 'SADDLES_TACK',
+          description: 'Premium leather western saddle with comfortable seat and durable construction.',
+          brand: 'EquiPro',
+          images: [],
+          price: 450.00,
+          stockQuantity: 15,
+          averageRating: 4.8,
+          totalReviews: 45,
+          specifications: { material: 'Genuine leather', size: 'Medium', weight: '35 lbs' },
+          tags: ['saddle', 'western', 'horse'],
+          isActive: true
+        },
+        {
+          id: '24',
+          name: 'Cattle Halter & Lead Rope Set',
+          category: 'HALTERS_LEADS',
+          description: 'Heavy-duty rope halter with 10ft lead rope, perfect for cattle and horses.',
+          brand: 'StrongHold',
+          images: [],
+          price: 28.99,
+          stockQuantity: 85,
+          averageRating: 4.7,
+          totalReviews: 112,
+          specifications: { material: 'Polypropylene', length: '10 ft', strength: '1200 lbs' },
+          tags: ['halter', 'rope', 'training'],
+          isActive: true
+        },
+        {
+          id: '25',
+          name: 'Livestock Dewormer - Ivermectin',
+          category: 'VETERINARY_MEDICINES',
+          description: 'Broad-spectrum dewormer for cattle, sheep, goats, and horses.',
+          brand: 'VetMed Pro',
+          images: [],
+          price: 42.99,
+          stockQuantity: 55,
+          averageRating: 4.9,
+          totalReviews: 98,
+          specifications: { volume: '250ml', type: 'Injectable', dosage: '1ml per 50kg' },
+          tags: ['dewormer', 'parasite-control', 'veterinary'],
+          isActive: true
+        },
+        {
+          id: '26',
+          name: 'Goat & Sheep Mineral Feeder',
+          category: 'FARM_TOOLS',
+          description: 'Weather-resistant mineral feeder with covered design to keep minerals dry.',
+          brand: 'FarmEssentials',
+          images: [],
+          price: 65.99,
+          stockQuantity: 40,
+          averageRating: 4.5,
+          totalReviews: 76,
+          specifications: { capacity: '50 lbs', material: 'Galvanized steel' },
+          tags: ['feeder', 'minerals', 'equipment'],
+          isActive: true
+        },
+        {
+          id: '27',
+          name: 'Horse Grooming Kit - Complete',
+          category: 'GROOMING_SUPPLIES',
+          description: 'Professional 9-piece grooming kit including brushes, hoof pick, and curry comb.',
+          brand: 'EquiCare',
+          images: [],
+          price: 75.99,
+          stockQuantity: 50,
+          averageRating: 4.8,
+          totalReviews: 134,
+          specifications: { items: 9, material: 'Wood and metal', case: 'Included' },
+          tags: ['grooming', 'horse', 'complete-kit'],
+          isActive: true
+        },
+        {
+          id: '28',
+          name: 'Buffalo & Cattle Vitamin Supplement',
+          category: 'MINERAL_SUPPLEMENTS',
+          description: 'Complete vitamin and mineral supplement for dairy and beef cattle.',
+          brand: 'NutriBoost',
+          images: [],
+          price: 68.99,
+          stockQuantity: 70,
+          averageRating: 4.7,
+          totalReviews: 89,
+          specifications: { weight: '20 kg', type: 'Powder', duration: '30 days' },
+          tags: ['vitamins', 'cattle', 'buffalo'],
+          isActive: true
         }
       ]
       setProducts(mockProducts)
@@ -415,7 +579,7 @@ export default function ProductsPage() {
     return Object.values(cart).reduce((total, quantity) => total + quantity, 0)
   }
 
-  if (isLoading) {
+  if (isLoading || currencyLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -464,7 +628,7 @@ export default function ProductsPage() {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <input
                     type="text"
-                    placeholder="Search products, brands, or categories..."
+                    placeholder="Search products for pets, livestock, farm animals..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -507,7 +671,7 @@ export default function ProductsPage() {
               </div>
               {getCartTotal() > 0 && (
                 <div className="text-lg font-semibold text-green-600">
-                  Cart Total: ${getCartTotal().toFixed(2)}
+                  Cart Total: {formatPrice(getCartTotal())}
                 </div>
               )}
             </div>
@@ -578,7 +742,7 @@ export default function ProductsPage() {
                   <p className="text-gray-700 text-xs mb-3 line-clamp-2">{product.description}</p>
 
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-xl font-bold text-gray-900">${product.price}</div>
+                    <div className="text-xl font-bold text-gray-900">{formatPrice(product.price)}</div>
                     <div className="text-xs text-gray-500">{product.stockQuantity} in stock</div>
                   </div>
 
@@ -642,7 +806,7 @@ export default function ProductsPage() {
               <button className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-full shadow-2xl hover:from-green-700 hover:to-blue-700 transition-all duration-300 flex items-center space-x-2">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="font-medium">
-                  Checkout ({getCartItemsCount()}) - ${getCartTotal().toFixed(2)}
+                  Checkout ({getCartItemsCount()}) - {formatPrice(getCartTotal())}
                 </span>
               </button>
             </motion.div>

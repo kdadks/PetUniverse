@@ -153,12 +153,34 @@ export default function PetsPage() {
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       >
                         <option value="">Select Species *</option>
-                        <option value="dog">Dog</option>
-                        <option value="cat">Cat</option>
-                        <option value="bird">Bird</option>
-                        <option value="rabbit">Rabbit</option>
-                        <option value="fish">Fish</option>
-                        <option value="other">Other</option>
+                        <optgroup label="Traditional Pets">
+                          <option value="DOG">Dog</option>
+                          <option value="CAT">Cat</option>
+                          <option value="BIRD">Bird</option>
+                          <option value="FISH">Fish</option>
+                          <option value="RABBIT">Rabbit</option>
+                          <option value="HAMSTER">Hamster</option>
+                          <option value="GUINEA_PIG">Guinea Pig</option>
+                        </optgroup>
+                        <optgroup label="Livestock & Farm Animals">
+                          <option value="COW">Cow</option>
+                          <option value="BUFFALO">Buffalo</option>
+                          <option value="CAMEL">Camel</option>
+                          <option value="GOAT">Goat</option>
+                          <option value="SHEEP">Sheep</option>
+                          <option value="HORSE">Horse</option>
+                          <option value="OX">Ox</option>
+                          <option value="DONKEY">Donkey</option>
+                        </optgroup>
+                        <optgroup label="Poultry & Birds">
+                          <option value="CHICKEN">Chicken</option>
+                          <option value="DUCK">Duck</option>
+                          <option value="TURKEY">Turkey</option>
+                          <option value="GOOSE">Goose</option>
+                          <option value="QUAIL">Quail</option>
+                          <option value="PIGEON">Pigeon</option>
+                        </optgroup>
+                        <option value="OTHER">Other</option>
                       </select>
                     </div>
 

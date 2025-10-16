@@ -16,8 +16,13 @@ import {
   GraduationCap,
   Home,
   Car,
-  Users
+  Users,
+  Beef,
+  Milk,
+  Syringe,
+  Sprout
 } from 'lucide-react'
+import { useCurrency } from '@/lib/useCurrency'
 
 interface Service {
   id: string
@@ -40,16 +45,26 @@ interface Service {
 
 const serviceCategories = [
   { id: 'ALL', name: 'All Services', icon: Heart },
+  // Pet Services
   { id: 'GROOMING', name: 'Pet Grooming', icon: Scissors },
   { id: 'VETERINARY_CONSULTATION', name: 'Veterinary Care', icon: Stethoscope },
   { id: 'TRAINING', name: 'Pet Training', icon: GraduationCap },
   { id: 'PET_SITTING', name: 'Pet Sitting', icon: Home },
   { id: 'WALKING', name: 'Dog Walking', icon: Car },
   { id: 'BOARDING', name: 'Pet Boarding', icon: Users },
+  // Livestock Services
+  { id: 'LIVESTOCK_VETERINARY', name: 'Livestock Veterinary', icon: Stethoscope },
+  { id: 'BREEDING_SERVICES', name: 'Breeding Services', icon: Beef },
+  { id: 'ARTIFICIAL_INSEMINATION', name: 'Artificial Insemination', icon: Syringe },
+  { id: 'VACCINATION', name: 'Vaccination', icon: Syringe },
+  { id: 'MILK_TESTING', name: 'Milk Testing', icon: Milk },
+  { id: 'FEED_CONSULTATION', name: 'Feed Consultation', icon: Sprout },
+  { id: 'FARM_VISIT', name: 'Farm Visit', icon: Home },
 ]
 
 export default function ServicesPage() {
   const { data: session } = useSession()
+  const { formatPrice, isLoading: currencyLoading } = useCurrency()
   const [services, setServices] = useState<Service[]>([])
   const [filteredServices, setFilteredServices] = useState<Service[]>([])
   const [selectedCategory, setSelectedCategory] = useState('ALL')
@@ -249,6 +264,157 @@ export default function ServicesPage() {
             isVerified: true,
             user: { firstName: 'Maria', lastName: 'Garcia' }
           }
+        },
+        // Livestock Services
+        {
+          id: '13',
+          name: 'Cattle Veterinary Checkup',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Complete health examination for cattle including disease screening and health certification',
+          price: 200,
+          duration: 120,
+          provider: {
+            businessName: 'Farm Vet Services',
+            averageRating: 4.9,
+            totalReviews: 145,
+            isVerified: true,
+            user: { firstName: 'Dr. Robert', lastName: 'Miller' }
+          }
+        },
+        {
+          id: '14',
+          name: 'Horse Health & Wellness Visit',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Comprehensive equine health check, dental exam, and hoof inspection',
+          price: 250,
+          duration: 180,
+          provider: {
+            businessName: 'Equine Care Specialists',
+            averageRating: 4.8,
+            totalReviews: 98,
+            isVerified: true,
+            user: { firstName: 'Dr. Jennifer', lastName: 'Thompson' }
+          }
+        },
+        {
+          id: '15',
+          name: 'Goat & Sheep Vaccination',
+          category: 'VACCINATION',
+          description: 'Standard vaccination protocol for goats and sheep including deworming',
+          price: 80,
+          duration: 60,
+          provider: {
+            businessName: 'Livestock Health Pro',
+            averageRating: 4.7,
+            totalReviews: 112,
+            isVerified: true,
+            user: { firstName: 'Dr. William', lastName: 'Harris' }
+          }
+        },
+        {
+          id: '16',
+          name: 'Cattle Breeding Consultation',
+          category: 'BREEDING_SERVICES',
+          description: 'Professional breeding guidance, genetic selection, and breeding schedule planning',
+          price: 350,
+          duration: 240,
+          provider: {
+            businessName: 'Premium Livestock Genetics',
+            averageRating: 4.9,
+            totalReviews: 76,
+            isVerified: true,
+            user: { firstName: 'James', lastName: 'Anderson' }
+          }
+        },
+        {
+          id: '17',
+          name: 'Artificial Insemination Service',
+          category: 'ARTIFICIAL_INSEMINATION',
+          description: 'Professional AI service for cattle, buffalo, and dairy animals with certified semen',
+          price: 150,
+          duration: 90,
+          provider: {
+            businessName: 'Dairy Breeding Solutions',
+            averageRating: 4.8,
+            totalReviews: 134,
+            isVerified: true,
+            user: { firstName: 'Michael', lastName: 'Davis' }
+          }
+        },
+        {
+          id: '18',
+          name: 'Dairy Milk Quality Testing',
+          category: 'MILK_TESTING',
+          description: 'Complete milk analysis including fat content, protein, bacterial count, and adulteration testing',
+          price: 120,
+          duration: 30,
+          provider: {
+            businessName: 'Dairy Lab Services',
+            averageRating: 4.6,
+            totalReviews: 89,
+            isVerified: true,
+            user: { firstName: 'Dr. Susan', lastName: 'White' }
+          }
+        },
+        {
+          id: '19',
+          name: 'Livestock Nutrition Consultation',
+          category: 'FEED_CONSULTATION',
+          description: 'Custom feed plan development for optimal animal health and productivity',
+          price: 180,
+          duration: 120,
+          provider: {
+            businessName: 'Farm Nutrition Experts',
+            averageRating: 4.7,
+            totalReviews: 67,
+            isVerified: true,
+            user: { firstName: 'Dr. Richard', lastName: 'Brown' }
+          }
+        },
+        {
+          id: '20',
+          name: 'Complete Farm Health Visit',
+          category: 'FARM_VISIT',
+          description: 'Comprehensive on-farm visit for herd health assessment and disease prevention',
+          price: 300,
+          duration: 240,
+          provider: {
+            businessName: 'Mobile Farm Veterinary',
+            averageRating: 4.9,
+            totalReviews: 156,
+            isVerified: true,
+            user: { firstName: 'Dr. Thomas', lastName: 'Wilson' }
+          }
+        },
+        {
+          id: '21',
+          name: 'Buffalo Health Management',
+          category: 'LIVESTOCK_VETERINARY',
+          description: 'Specialized health care for water buffalo including vaccination and disease control',
+          price: 220,
+          duration: 150,
+          provider: {
+            businessName: 'Buffalo Care Center',
+            averageRating: 4.8,
+            totalReviews: 82,
+            isVerified: true,
+            user: { firstName: 'Dr. Maria', lastName: 'Rodriguez' }
+          }
+        },
+        {
+          id: '22',
+          name: 'Camel Health & Vaccination',
+          category: 'VACCINATION',
+          description: 'Specialized camel health services including routine vaccines and parasite control',
+          price: 280,
+          duration: 120,
+          provider: {
+            businessName: 'Desert Animal Care',
+            averageRating: 4.7,
+            totalReviews: 45,
+            isVerified: true,
+            user: { firstName: 'Dr. Ahmed', lastName: 'Hassan' }
+          }
         }
       ]
       setServices(mockServices)
@@ -281,7 +447,7 @@ export default function ServicesPage() {
     setFilteredServices(filtered)
   }
 
-  if (isLoading) {
+  if (isLoading || currencyLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -320,7 +486,7 @@ export default function ServicesPage() {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <input
                     type="text"
-                    placeholder="Search services, providers, or locations..."
+                    placeholder="Search services for pets, livestock, farm animals..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -425,7 +591,7 @@ export default function ServicesPage() {
 
                 <div className="flex items-center justify-between">
                   <div className="text-2xl font-bold text-gray-900">
-                    ${service.price}
+                    {formatPrice(service.price)}
                   </div>
                   <div className="flex space-x-2">
                     <Link

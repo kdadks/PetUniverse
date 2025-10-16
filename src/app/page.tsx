@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Improved Background with Better Colors */}
         <motion.div
           className="absolute inset-0 w-full h-full"
@@ -68,7 +68,7 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute top-1/4 left-1/4 w-24 h-24 bg-gradient-to-r from-emerald-400/15 to-teal-400/15 rounded-full backdrop-blur-sm border border-white/20"
+            className="absolute top-1/4 left-1/4 w-20 h-20 bg-gradient-to-r from-emerald-400/15 to-teal-400/15 rounded-full backdrop-blur-sm border border-white/20"
           />
           <motion.div
             animate={{
@@ -81,7 +81,7 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute top-1/3 right-1/4 w-32 h-32 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full backdrop-blur-sm border border-white/20"
+            className="absolute top-1/3 right-1/4 w-24 h-24 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full backdrop-blur-sm border border-white/20"
           />
           <motion.div
             animate={{
@@ -94,26 +94,26 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-teal-400/15 to-emerald-400/15 rounded-full backdrop-blur-sm border border-white/20"
+            className="absolute bottom-1/3 left-1/3 w-16 h-16 bg-gradient-to-r from-teal-400/15 to-emerald-400/15 rounded-full backdrop-blur-sm border border-white/20"
           />
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-6"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mb-4"
           >
-            <div className="inline-flex items-center space-x-3 mb-8">
+            <div className="inline-flex items-center space-x-2 mb-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-70" />
-                <div className="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white rounded-full p-4">
-                  <span className="text-4xl">🐾</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full blur-md opacity-70" />
+                <div className="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white rounded-full p-3">
+                  <span className="text-3xl">🐾</span>
                 </div>
               </div>
-              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 P4Pet
               </span>
             </div>
@@ -121,10 +121,10 @@ export default function Home() {
 
           {/* Main Headline with Glossy Animation */}
           <motion.h1
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="relative text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="relative text-3xl md:text-5xl lg:text-6xl font-bold mb-4"
           >
             <span className="relative inline-block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
               Your Pet's
@@ -141,8 +141,8 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto leading-relaxed"
           >
             Connect with trusted pet care professionals, discover premium products,
             and give your furry friends the love they deserve.
@@ -150,10 +150,10 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
           >
             {/* Primary CTA - Glowing Gradient */}
             <motion.div
@@ -162,20 +162,20 @@ export default function Home() {
             >
               <Link
                 href="/auth/signup"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 ease-out overflow-hidden rounded-2xl"
+                className="group relative inline-flex items-center justify-center px-6 py-3 font-bold text-white transition-all duration-300 ease-out overflow-hidden rounded-xl"
               >
                 {/* Background gradients */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-2xl" />
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-2xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-xl blur-lg opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
                 {/* Shine overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out" />
 
                 {/* Content */}
-                <span className="relative flex items-center space-x-3 text-lg">
-                  <Sparkles className="h-5 w-5" />
+                <span className="relative flex items-center space-x-2 text-base md:text-lg">
+                  <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
                   <span>Start Your Journey</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </Link>
             </motion.div>
@@ -187,10 +187,10 @@ export default function Home() {
             >
               <Link
                 href="/services"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-medium text-white transition-all duration-300 ease-out overflow-hidden rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20"
+                className="group relative inline-flex items-center justify-center px-6 py-3 font-medium text-white transition-all duration-300 ease-out overflow-hidden rounded-xl backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20"
               >
-                <span className="relative flex items-center space-x-3 text-lg">
-                  <Play className="h-5 w-5" />
+                <span className="relative flex items-center space-x-2 text-base md:text-lg">
+                  <Play className="h-4 w-4 md:h-5 md:w-5" />
                   <span>Explore Services</span>
                 </span>
               </Link>
@@ -199,25 +199,25 @@ export default function Home() {
 
           {/* Floating Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto"
           >
-            <div className="backdrop-blur-lg bg-white/10 rounded-2xl border border-white/20 p-6 text-center">
-              <div className="text-3xl font-bold text-white mb-2">10K+</div>
-              <div className="text-white/80">Happy Pets</div>
+            <div className="backdrop-blur-lg bg-white/10 rounded-xl border border-white/20 p-3 md:p-4 text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">10K+</div>
+              <div className="text-xs md:text-sm text-white/80">Happy Pets</div>
             </div>
-            <div className="backdrop-blur-lg bg-white/10 rounded-2xl border border-white/20 p-6 text-center">
-              <div className="text-3xl font-bold text-white mb-2">500+</div>
-              <div className="text-white/80">Trusted Providers</div>
+            <div className="backdrop-blur-lg bg-white/10 rounded-xl border border-white/20 p-3 md:p-4 text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white mb-1">500+</div>
+              <div className="text-xs md:text-sm text-white/80">Trusted Providers</div>
             </div>
-            <div className="backdrop-blur-lg bg-white/10 rounded-2xl border border-white/20 p-6 text-center">
-              <div className="flex items-center justify-center mb-2">
-                <div className="text-3xl font-bold text-white">4.9</div>
-                <Star className="h-6 w-6 text-yellow-400 fill-current ml-2" />
+            <div className="backdrop-blur-lg bg-white/10 rounded-xl border border-white/20 p-3 md:p-4 text-center">
+              <div className="flex items-center justify-center mb-1">
+                <div className="text-2xl md:text-3xl font-bold text-white">4.9</div>
+                <Star className="h-4 w-4 md:h-5 md:w-5 text-yellow-400 fill-current ml-1" />
               </div>
-              <div className="text-white/80">Average Rating</div>
+              <div className="text-xs md:text-sm text-white/80">Average Rating</div>
             </div>
           </motion.div>
         </div>

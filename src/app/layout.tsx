@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthSessionProvider from "@/components/providers/session-provider";
+import { CurrencyProvider } from "@/lib/useCurrency";
 import GlossyHeader from "@/components/ui/glossy-header";
 import GlossyFooter from "@/components/ui/glossy-footer";
 
@@ -31,11 +32,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthSessionProvider>
-          <GlossyHeader />
-          <div className="pt-16">
-            {children}
-          </div>
-          <GlossyFooter />
+          <CurrencyProvider>
+            <GlossyHeader />
+            <div className="pt-16">
+              {children}
+            </div>
+            <GlossyFooter />
+          </CurrencyProvider>
         </AuthSessionProvider>
       </body>
     </html>
