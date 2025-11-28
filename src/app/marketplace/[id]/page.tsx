@@ -463,7 +463,7 @@ export default function MarketplaceDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16 pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <motion.button
@@ -485,7 +485,7 @@ export default function MarketplaceDetailsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white/80 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white/20 mb-6"
             >
-              <div className="h-96 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center relative">
+              <div className="h-96 bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center relative">
                 <div className="text-8xl">
                   {listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
                    listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
@@ -667,7 +667,7 @@ export default function MarketplaceDetailsPage() {
               <div className="space-y-3 mb-6">
                 <button
                   onClick={handleContact}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300"
                 >
                   {session ? 'Contact Owner' : 'Sign In to Contact'}
                 </button>

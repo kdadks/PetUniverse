@@ -29,14 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 min-h-screen`}
       >
         <AuthSessionProvider>
           <CurrencyProvider>
             <GlossyHeader />
-            <div className="pt-16">
+            <main className="pt-16">
               {children}
-            </div>
+            </main>
             <GlossyFooter />
           </CurrencyProvider>
         </AuthSessionProvider>

@@ -111,27 +111,31 @@ export default function ProviderOnboarding() {
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-teal-600"></div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16">
+      <div className="bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 pt-28 pb-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+              Join Our Service Provider Network
+            </h1>
+            <p className="text-xl text-gray-600">
+              Start offering your pet care services to thousands of loving pet owners
+            </p>
+          </motion.div>
+        </div>
+      </div>
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
-        >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            Join Our Service Provider Network
-          </h1>
-          <p className="text-xl text-gray-600">
-            Start offering your pet care services to thousands of loving pet owners
-          </p>
-        </motion.div>
 
         {/* Progress Bar */}
         <div className="mb-8">
@@ -141,7 +145,7 @@ export default function ProviderOnboarding() {
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold ${
                     step <= currentStep
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                      ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-white'
                       : 'bg-gray-200 text-gray-500'
                   }`}
                 >
@@ -150,7 +154,7 @@ export default function ProviderOnboarding() {
                 {step < 4 && (
                   <div
                     className={`w-24 h-1 mx-2 ${
-                      step < currentStep ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-gray-200'
+                      step < currentStep ? 'bg-gradient-to-r from-teal-500 to-emerald-500' : 'bg-gray-200'
                     }`}
                   />
                 )}
@@ -177,7 +181,7 @@ export default function ProviderOnboarding() {
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-6">
-                <Building2 className="h-6 w-6 text-blue-600" />
+                <Building2 className="h-6 w-6 text-teal-600" />
                 <h2 className="text-2xl font-bold text-gray-900">Business Information</h2>
               </div>
 
@@ -192,7 +196,7 @@ export default function ProviderOnboarding() {
                     required
                     value={formData.businessName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Your Business Name"
                   />
                 </div>
@@ -269,7 +273,7 @@ export default function ProviderOnboarding() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-6">
-                <Clock className="h-6 w-6 text-blue-600" />
+                <Clock className="h-6 w-6 text-teal-600" />
                 <h2 className="text-2xl font-bold text-gray-900">Business Hours & Service Area</h2>
               </div>
 
@@ -296,14 +300,14 @@ export default function ProviderOnboarding() {
                             type="time"
                             value={hours.open}
                             onChange={(e) => handleBusinessHoursChange(day, 'open', e.target.value)}
-                            className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                           />
                           <span className="text-gray-500">to</span>
                           <input
                             type="time"
                             value={hours.close}
                             onChange={(e) => handleBusinessHoursChange(day, 'close', e.target.value)}
-                            className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                           />
                         </>
                       )}
@@ -349,7 +353,7 @@ export default function ProviderOnboarding() {
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-6">
-                <FileText className="h-6 w-6 text-blue-600" />
+                <FileText className="h-6 w-6 text-teal-600" />
                 <h2 className="text-2xl font-bold text-gray-900">Business Policies</h2>
               </div>
 
@@ -361,7 +365,7 @@ export default function ProviderOnboarding() {
                   rows={3}
                   value={formData.policies.cancellation}
                   onChange={(e) => handleNestedChange('policies', 'cancellation', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   placeholder="Describe your cancellation policy..."
                 />
               </div>
@@ -374,7 +378,7 @@ export default function ProviderOnboarding() {
                   rows={3}
                   value={formData.policies.refund}
                   onChange={(e) => handleNestedChange('policies', 'refund', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   placeholder="Describe your refund policy..."
                 />
               </div>
@@ -387,7 +391,7 @@ export default function ProviderOnboarding() {
                   rows={4}
                   value={formData.policies.terms}
                   onChange={(e) => handleNestedChange('policies', 'terms', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                   placeholder="Additional terms and conditions..."
                 />
               </div>
@@ -398,11 +402,11 @@ export default function ProviderOnboarding() {
           {currentStep === 4 && (
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-6">
-                <Shield className="h-6 w-6 text-blue-600" />
+                <Shield className="h-6 w-6 text-teal-600" />
                 <h2 className="text-2xl font-bold text-gray-900">Review & Submit</h2>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 space-y-4">
+              <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-lg p-6 space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900">Business Information</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div><strong>Name:</strong> {formData.businessName}</div>
@@ -449,7 +453,7 @@ export default function ProviderOnboarding() {
               <button
                 onClick={nextStep}
                 disabled={currentStep === 1 && (!formData.businessName || !formData.businessType)}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white rounded-lg hover:from-teal-600 hover:to-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
               >
                 Next
               </button>
@@ -457,7 +461,7 @@ export default function ProviderOnboarding() {
               <button
                 onClick={handleSubmit}
                 disabled={isLoading}
-                className="px-8 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg hover:from-green-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-2"
+                className="px-8 py-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-lg hover:from-teal-700 hover:to-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-2"
               >
                 {isLoading ? (
                   <>

@@ -30,13 +30,13 @@ const socialLinks = [
 
 export default function GlossyFooter() {
   return (
-    <footer className="relative overflow-hidden mt-16">
-      {/* Background with glassmorphic effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-purple-900/90 to-pink-900/90 backdrop-blur-xl"></div>
+    <footer className="relative overflow-hidden">
+      {/* Background with glassmorphic effect - Teal theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-900/95 via-cyan-900/95 to-emerald-900/95 backdrop-blur-xl"></div>
 
       {/* Subtle floating orbs */}
-      <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-0 left-1/4 w-32 h-32 bg-teal-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
       <div className="relative z-10">
         {/* Main Footer Content */}
@@ -50,25 +50,25 @@ export default function GlossyFooter() {
               className="md:col-span-2"
             >
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center">
                   <Heart className="h-5 w-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
+                <h2 className="text-xl font-bold bg-gradient-to-r from-teal-200 to-emerald-200 bg-clip-text text-transparent">
                   P4Pet
                 </h2>
               </div>
-              <p className="text-blue-100 mb-4 text-sm max-w-md">
+              <p className="text-teal-100 mb-4 text-sm max-w-md">
                 Your one-stop destination for all pet care needs. Connecting pet owners with trusted services and quality products.
               </p>
 
               {/* Contact Info */}
-              <div className="flex flex-col sm:flex-row gap-4 text-blue-100 text-sm">
+              <div className="flex flex-col sm:flex-row gap-4 text-teal-100 text-sm">
                 <div className="flex items-center space-x-2">
-                  <Phone className="h-4 w-4 text-blue-300" />
+                  <Phone className="h-4 w-4 text-teal-300" />
                   <span>1-800-PET-LOVE</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Mail className="h-4 w-4 text-blue-300" />
+                  <Mail className="h-4 w-4 text-teal-300" />
                   <span>hello@petuniverse.com</span>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function GlossyFooter() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-blue-100 hover:text-white transition-colors duration-300 text-sm"
+                      className="text-teal-100 hover:text-white transition-colors duration-300 text-sm"
                     >
                       {link.name}
                     </Link>
@@ -111,7 +111,7 @@ export default function GlossyFooter() {
                       href={social.href}
                       className="w-8 h-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 group"
                     >
-                      <Icon className="h-4 w-4 text-blue-200 group-hover:text-white transition-colors duration-300" />
+                      <Icon className="h-4 w-4 text-teal-200 group-hover:text-white transition-colors duration-300" />
                     </Link>
                   )
                 })}
@@ -123,9 +123,9 @@ export default function GlossyFooter() {
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="flex-1 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-blue-200 text-sm"
+                    className="flex-1 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-teal-400 text-white placeholder-teal-200 text-sm"
                   />
-                  <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-r-lg transition-all duration-300 text-sm font-medium">
+                  <button className="px-4 py-2 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white rounded-r-lg transition-all duration-300 text-sm font-medium">
                     Subscribe
                   </button>
                 </div>
@@ -141,17 +141,17 @@ export default function GlossyFooter() {
             className="mt-8 pt-6 border-t border-white/10"
           >
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <div className="text-blue-100 text-sm">
-                © 2024 P4Pet. All rights reserved.
+              <div className="text-teal-100 text-sm">
+                © 2025 P4Pet. All rights reserved.
               </div>
               <div className="flex space-x-4 text-sm">
-                <Link href="/privacy" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <Link href="/privacy" className="text-teal-100 hover:text-white transition-colors duration-300">
                   Privacy
                 </Link>
-                <Link href="/terms" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <Link href="/terms" className="text-teal-100 hover:text-white transition-colors duration-300">
                   Terms
                 </Link>
-                <Link href="/cookies" className="text-blue-100 hover:text-white transition-colors duration-300">
+                <Link href="/cookies" className="text-teal-100 hover:text-white transition-colors duration-300">
                   Cookies
                 </Link>
               </div>

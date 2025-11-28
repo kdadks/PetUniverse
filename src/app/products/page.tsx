@@ -588,19 +588,19 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <div className="bg-white/50 backdrop-blur-sm shadow-lg">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16">
+      <div className="bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
+          <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
                 Pet Products
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-gray-600">{filteredProducts.length} products</span>
               <div className="relative">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg">
+                <button className="bg-gradient-to-r from-teal-500 to-emerald-500 text-white p-3 rounded-full hover:from-teal-600 hover:to-emerald-600 transition-all duration-300 shadow-lg">
                   <ShoppingCart className="h-5 w-5" />
                 </button>
                 {getCartItemsCount() > 0 && (
@@ -692,7 +692,7 @@ export default function ProductsPage() {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                      ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg'
                       : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-md'
                   }`}
                 >
@@ -758,7 +758,7 @@ export default function ProductsPage() {
                         <span className="text-sm font-medium">{cart[product.id]}</span>
                         <button
                           onClick={() => addToCart(product.id)}
-                          className="bg-blue-600 hover:bg-blue-700 text-white p-1 rounded-full transition-colors duration-300"
+                          className="bg-teal-500 hover:bg-teal-600 text-white p-1 rounded-full transition-colors duration-300"
                         >
                           <Plus className="h-4 w-4" />
                         </button>
@@ -766,7 +766,7 @@ export default function ProductsPage() {
                     ) : (
                       <button
                         onClick={() => addToCart(product.id)}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-1"
+                        className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-1"
                       >
                         <ShoppingCart className="h-4 w-4" />
                         <span>Add to Cart</span>
