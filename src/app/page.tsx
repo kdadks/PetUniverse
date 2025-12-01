@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Sparkles, ArrowRight, Play, Heart, Star, Zap, Shield, Clock } from 'lucide-react'
+import { Sparkles, ArrowRight, Play, Heart, Star, Zap, Shield, Clock, Scissors, Stethoscope, Bone, Home as HomeIcon } from 'lucide-react'
 
 // Animated Wave Component - Teal theme
 const AnimatedWaves = () => {
@@ -87,9 +87,9 @@ const TealGlow = () => {
       {/* Central Glow */}
       <motion.div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        initial={{ scale: 0.8, opacity: 0 }}
+        initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         {/* Outer glow */}
         <motion.div
@@ -164,25 +164,40 @@ const TealGlow = () => {
 // Floating Pet Icons
 const FloatingPetIcons = () => {
   const pets = [
-    // Traditional Pets
-    { emoji: '🐕', left: 8, top: 15 },
-    { emoji: '🐈', left: 22, top: 35 },
-    { emoji: '🐦', left: 85, top: 20 },
-    { emoji: '🐰', left: 75, top: 45 },
-    { emoji: '🐠', left: 15, top: 60 },
-    { emoji: '🐹', left: 88, top: 65 },
-    { emoji: '🦜', left: 45, top: 12 },
-    { emoji: '🐢', left: 55, top: 70 },
-    // Livestock & Farm Animals
-    { emoji: '🐴', left: 35, top: 25 },
-    { emoji: '🐄', left: 65, top: 30 },
-    { emoji: '🐐', left: 25, top: 75 },
-    { emoji: '🐑', left: 70, top: 75 },
-    { emoji: '🐖', left: 50, top: 55 },
-    { emoji: '🐓', left: 92, top: 40 },
-    { emoji: '🦆', left: 5, top: 40 },
-    { emoji: '🐫', left: 60, top: 15 },
+    // Left side pets - float right
+    { emoji: '🐕', left: 3, top: 15, direction: 'right' },
+    { emoji: '🐈', left: 8, top: 35, direction: 'up' },
+    { emoji: '🐠', left: 5, top: 55, direction: 'right' },
+    { emoji: '🐴', left: 10, top: 75, direction: 'down' },
+    { emoji: '🦆', left: 2, top: 45, direction: 'right' },
+    { emoji: '🐰', left: 12, top: 25, direction: 'up' },
+    { emoji: '🐖', left: 6, top: 65, direction: 'right' },
+    { emoji: '🐑', left: 14, top: 85, direction: 'down' },
+    // Right side pets - float left
+    { emoji: '🐦', left: 88, top: 20, direction: 'left' },
+    { emoji: '🐹', left: 92, top: 40, direction: 'up' },
+    { emoji: '🐢', left: 86, top: 60, direction: 'left' },
+    { emoji: '🐄', left: 90, top: 80, direction: 'down' },
+    { emoji: '🦜', left: 94, top: 30, direction: 'left' },
+    { emoji: '🐓', left: 85, top: 50, direction: 'up' },
+    { emoji: '🐐', left: 96, top: 70, direction: 'left' },
+    { emoji: '🐫', left: 88, top: 15, direction: 'down' },
   ]
+
+  const getAnimation = (direction: string) => {
+    switch (direction) {
+      case 'up':
+        return { y: [0, -25, 0], x: [-5, 5, -5], rotate: [-3, 3, -3] }
+      case 'down':
+        return { y: [0, 25, 0], x: [5, -5, 5], rotate: [3, -3, 3] }
+      case 'left':
+        return { x: [0, -25, 0], y: [-5, 5, -5], rotate: [-5, 5, -5] }
+      case 'right':
+        return { x: [0, 25, 0], y: [5, -5, 5], rotate: [5, -5, 5] }
+      default:
+        return { y: [-15, 15, -15], x: [-10, 10, -10], rotate: [-5, 5, -5] }
+    }
+  }
   
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -194,21 +209,82 @@ const FloatingPetIcons = () => {
             left: `${pet.left}%`,
             top: `${pet.top}%`,
           }}
-          animate={{
-            y: [-15, 15, -15],
-            x: [-10, 10, -10],
-            rotate: [-5, 5, -5],
-          }}
+          animate={getAnimation(pet.direction)}
           transition={{
-            duration: 5 + (i % 4),
+            duration: 4 + (i % 3),
             repeat: Infinity,
             ease: "easeInOut",
-            delay: i * 0.3,
+            delay: i * 0.2,
           }}
         >
           {pet.emoji}
         </motion.div>
       ))}
+    </div>
+  )
+}
+
+// Rolling Featured Services Component
+const RollingServices = () => {
+  const featuredServices = [
+    { icon: Scissors, name: 'Pet Grooming', color: 'from-teal-500 to-cyan-500', price: '$45', serviceId: '1' },
+    { icon: Stethoscope, name: 'Veterinary Care', color: 'from-cyan-500 to-blue-500', price: '$80', serviceId: '4' },
+    { icon: Bone, name: 'Training', color: 'from-emerald-500 to-teal-500', price: '$60', serviceId: '6' },
+    { icon: HomeIcon, name: 'Pet Boarding', color: 'from-teal-600 to-emerald-600', price: '$35', serviceId: '12' },
+    { icon: Heart, name: 'Pet Sitting', color: 'from-cyan-600 to-teal-600', price: '$30', serviceId: '8' },
+    { icon: Star, name: 'Pet Spa', color: 'from-emerald-600 to-cyan-600', price: '$70', serviceId: '2' },
+  ]
+
+  // Duplicate services for seamless loop
+  const services = [...featuredServices, ...featuredServices]
+
+  return (
+    <div className="absolute -bottom-40 left-0 right-0 overflow-visible pointer-events-none" style={{ zIndex: 100 }}>
+      <div className="relative pointer-events-auto px-4">
+        {/* Rolling container */}
+        <motion.div
+          className="flex gap-6"
+          animate={{
+            x: [0, -1000],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 35,
+              ease: "linear",
+            },
+          }}
+        >
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <Link
+                key={index}
+                href={`/services/${service.serviceId}`}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.08, y: -8 }}
+                  className="flex-shrink-0 w-52 backdrop-blur-2xl bg-white/95 rounded-2xl border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-5 cursor-pointer group hover:shadow-[0_25px_60px_rgba(0,0,0,0.2)] transition-all duration-300"
+                  style={{
+                    transform: 'translateY(0)',
+                  }}
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="font-bold text-gray-800 mb-1 text-sm">{service.name}</h3>
+                  <p className="text-xs text-gray-500 mb-2">Professional Service</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-teal-600 font-bold text-lg">{service.price}</span>
+                    <ArrowRight className="h-4 w-4 text-teal-600 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </motion.div>
+              </Link>
+            )
+          })}
+        </motion.div>
+      </div>
     </div>
   )
 }
@@ -233,9 +309,9 @@ export default function Home() {
   }
 
   return (
-    <div className="relative overflow-hidden -mt-16">
+    <div className="relative overflow-visible">
       {/* Hero Section with Teal Glow Effect */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative h-[70vh] md:h-[75vh] flex items-center justify-center overflow-visible pt-32 pb-24" style={{ zIndex: 10 }}>
         {/* Light Teal Gradient Background */}
         <motion.div
           className="absolute inset-0 w-full h-full"
@@ -262,38 +338,16 @@ export default function Home() {
         <FloatingPetIcons />
 
         {/* Hero Content */}
-        <motion.div 
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20"
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           style={{ opacity }}
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <div className="inline-flex items-center space-x-2 bg-white/70 backdrop-blur-xl rounded-full px-4 py-2 border border-teal-200/50 shadow-lg">
-              <motion.span
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-xl"
-              >
-                🐾
-              </motion.span>
-              <span className="text-teal-700 font-semibold text-sm">
-                Trusted by 10,000+ Pet Parents
-              </span>
-              <Sparkles className="h-4 w-4 text-teal-500" />
-            </div>
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            transition={{ duration: 0.4, delay: 0.05 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
           >
             <span className="text-gray-800">
               Every Pet. Every Need.
@@ -307,42 +361,55 @@ export default function Home() {
                 className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 rounded-full shadow-lg"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               />
             </span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subheadline with stats inline */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed font-medium"
+            transition={{ duration: 0.3, delay: 0.15 }}
+            className="text-base md:text-lg text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed"
           >
             Every pet parent deserves access to every service their pet needs, from every trusted professional.
-            Your complete pet care ecosystem—all in one place.
+            <br />
+            <span className="inline-flex flex-wrap items-center justify-center gap-3 mt-3 text-sm font-semibold text-teal-700">
+              <span className="flex items-center gap-1">
+                <Heart className="h-4 w-4" /> 10K+ Happy Pets
+              </span>
+              <span className="text-teal-300">•</span>
+              <span className="flex items-center gap-1">
+                <Shield className="h-4 w-4" /> 500+ Providers
+              </span>
+              <span className="text-teal-300">•</span>
+              <span className="flex items-center gap-1">
+                <Star className="h-4 w-4 fill-teal-600" /> 4.9 Rating
+              </span>
+            </span>
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center"
           >
             {/* Primary CTA */}
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="/auth/signup"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 ease-out overflow-hidden rounded-2xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 shadow-2xl shadow-teal-500/25 hover:shadow-teal-500/40"
+                className="group relative inline-flex items-center justify-center px-6 py-3 font-bold text-white transition-all duration-300 ease-out overflow-hidden rounded-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 shadow-2xl shadow-teal-500/25 hover:shadow-teal-500/40"
               >
                 {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
-                
-                <span className="relative flex items-center space-x-2 text-base md:text-lg">
-                  <Sparkles className="h-5 w-5" />
+
+                <span className="relative flex items-center space-x-2">
+                  <Sparkles className="h-4 w-4" />
                   <span>Start Your Journey</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
               </Link>
             </motion.div>
@@ -351,56 +418,28 @@ export default function Home() {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 href="/services"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-medium text-teal-700 transition-all duration-300 ease-out overflow-hidden rounded-2xl backdrop-blur-xl bg-white/60 border-2 border-teal-200 hover:bg-white/80 hover:border-teal-300"
+                className="group relative inline-flex items-center justify-center px-6 py-3 font-medium text-teal-700 transition-all duration-300 ease-out overflow-hidden rounded-xl backdrop-blur-xl bg-white/60 border-2 border-teal-200 hover:bg-white/80 hover:border-teal-300"
               >
-                <span className="relative flex items-center space-x-2 text-base md:text-lg">
-                  <Play className="h-5 w-5" />
+                <span className="relative flex items-center space-x-2">
+                  <Play className="h-4 w-4" />
                   <span>Explore Services</span>
                 </span>
               </Link>
             </motion.div>
           </motion.div>
-
-          {/* Stats Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl mx-auto"
-          >
-            {[
-              { value: '10K+', label: 'Happy Pets', icon: Heart },
-              { value: '500+', label: 'Trusted Providers', icon: Shield },
-              { value: '4.9', label: 'Average Rating', icon: Star, extra: '⭐' },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="backdrop-blur-xl bg-white/70 rounded-2xl border border-teal-200/50 p-4 md:p-6 text-center hover:bg-white/90 transition-all duration-300 group shadow-lg"
-              >
-                <div className="flex items-center justify-center mb-2">
-                  <span className="text-2xl md:text-4xl font-bold text-teal-700">
-                    {stat.value}
-                  </span>
-                  {stat.extra && <span className="ml-1 text-lg md:text-xl">{stat.extra}</span>}
-                </div>
-                <p className="text-xs md:text-sm text-gray-600 font-semibold">{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
+
+        {/* Rolling Featured Services */}
+        <RollingServices />
 
         {/* Animated Waves */}
         <AnimatedWaves />
       </section>
 
       {/* Features Section */}
-      <section className="relative py-24 bg-gradient-to-b from-teal-50 via-cyan-50 to-emerald-50">
+      <section className="relative py-24 pt-48 bg-gradient-to-b from-teal-50 via-cyan-50 to-emerald-50" style={{ zIndex: 1 }}>
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-teal-50/80 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-teal-50/90 to-transparent" style={{ zIndex: 1 }} />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -484,9 +523,9 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative"
+                className="group relative h-full"
               >
-                <div className={`relative bg-gradient-to-br ${feature.bgGradient} rounded-3xl p-8 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
+                <div className={`relative h-full flex flex-col bg-gradient-to-br ${feature.bgGradient} rounded-3xl p-8 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
                   {/* Hover gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
                   
@@ -501,7 +540,7 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-orange-600 group-hover:to-pink-600 transition-all duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed flex-grow">
                     {feature.description}
                   </p>
                   
