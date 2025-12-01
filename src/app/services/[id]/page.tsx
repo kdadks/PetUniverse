@@ -94,6 +94,336 @@ export default function ServiceDetailsPage() {
           ],
           gallery: []
         },
+        '2': {
+          id: '2',
+          name: 'Cat Grooming & Bath',
+          category: 'GROOMING',
+          description: 'Specialized cat grooming service including gentle bathing, brushing, nail trimming, and ear cleaning. We use cat-specific products and techniques to ensure a calm, stress-free experience for your feline friend.',
+          price: 65,
+          duration: 90,
+          provider: {
+            businessName: 'Feline Fine Grooming',
+            averageRating: 4.7,
+            totalReviews: 89,
+            isVerified: true,
+            user: { firstName: 'Maria', lastName: 'Garcia' },
+            location: 'Cat Care Center',
+            experience: '6 years specializing in cat grooming',
+            specialties: ['Persian cats', 'Long-haired breeds', 'Senior cat care', 'Anxious cats'],
+            contact: { phone: '(555) 234-5678', email: 'maria@felinefine.com' }
+          },
+          features: [
+            'Gentle cat-safe bathing',
+            'Specialized brushing and de-matting',
+            'Nail trimming',
+            'Ear cleaning',
+            'Sanitary trim',
+            'Soft paw nail caps (optional)',
+            'Stress-free handling techniques',
+            'Lion cut or breed-specific styling'
+          ],
+          gallery: []
+        },
+        '3': {
+          id: '3',
+          name: 'Veterinary Consultation',
+          category: 'VETERINARY_CONSULTATION',
+          description: 'Comprehensive veterinary examination for pets including physical assessment, diagnostic consultation, treatment recommendations, and preventive care advice. Perfect for wellness checks or addressing health concerns.',
+          price: 95,
+          duration: 45,
+          provider: {
+            businessName: 'Pet Health Clinic',
+            averageRating: 4.9,
+            totalReviews: 243,
+            isVerified: true,
+            user: { firstName: 'Dr. Emily', lastName: 'Chen' },
+            location: 'Downtown Veterinary Center',
+            experience: '12 years of veterinary medicine',
+            specialties: ['Internal medicine', 'Preventive care', 'Diagnostic imaging', 'Senior pet health'],
+            contact: { phone: '(555) 345-6789', email: 'dr.chen@pethealth.com' }
+          },
+          features: [
+            'Complete physical examination',
+            'Health history review',
+            'Vaccination assessment',
+            'Diagnostic recommendations',
+            'Treatment plan development',
+            'Nutritional counseling',
+            'Behavioral consultation',
+            'Follow-up care instructions'
+          ],
+          gallery: []
+        },
+        '4': {
+          id: '4',
+          name: 'Professional Dog Training',
+          category: 'TRAINING',
+          description: 'Personalized dog training sessions covering obedience, behavior modification, and socialization. Uses positive reinforcement techniques to build a strong, trusting relationship with your dog.',
+          price: 120,
+          duration: 60,
+          provider: {
+            businessName: 'Canine Behavior Academy',
+            averageRating: 4.8,
+            totalReviews: 156,
+            isVerified: true,
+            user: { firstName: 'Mark', lastName: 'Thompson' },
+            location: 'Training Center',
+            experience: '10 years of professional dog training',
+            specialties: ['Obedience training', 'Behavior modification', 'Puppy training', 'Aggression management'],
+            contact: { phone: '(555) 456-7890', email: 'mark@canineacademy.com' }
+          },
+          features: [
+            'Custom training program',
+            'Positive reinforcement methods',
+            'Basic obedience commands',
+            'Leash training',
+            'Socialization techniques',
+            'Problem behavior correction',
+            'Owner education and coaching',
+            'Progress tracking and reports'
+          ],
+          gallery: []
+        },
+        '5': {
+          id: '5',
+          name: 'Pet Sitting Service',
+          category: 'PET_SITTING',
+          description: 'Reliable in-home pet sitting for dogs, cats, and small pets. Includes feeding, playtime, medication administration, and lots of love and attention while you\'re away.',
+          price: 50,
+          duration: 60,
+          provider: {
+            businessName: 'Loving Pet Care',
+            averageRating: 4.6,
+            totalReviews: 78,
+            isVerified: false,
+            user: { firstName: 'Emma', lastName: 'Wilson' },
+            location: 'Mobile Pet Services',
+            experience: '5 years of pet sitting and care',
+            specialties: ['Multiple pet households', 'Medication administration', 'Senior pet care', 'Special needs pets'],
+            contact: { phone: '(555) 567-8901', email: 'emma@lovingpetcare.com' }
+          },
+          features: [
+            'In-home pet care',
+            'Feeding and fresh water',
+            'Playtime and exercise',
+            'Medication administration',
+            'Litter box or potty breaks',
+            'Mail and plant watering',
+            'Photo updates',
+            'Overnight stays available'
+          ],
+          gallery: []
+        },
+        '6': {
+          id: '6',
+          name: 'Dog Walking Service',
+          category: 'WALKING',
+          description: '30-minute neighborhood walk with exercise and socialization for your dog. Perfect for busy pet parents or dogs needing extra activity during the day.',
+          price: 25,
+          duration: 30,
+          provider: {
+            businessName: 'Active Paws',
+            averageRating: 4.5,
+            totalReviews: 203,
+            isVerified: true,
+            user: { firstName: 'Jake', lastName: 'Miller' },
+            location: 'Dog Walking Services',
+            experience: '7 years of professional dog walking',
+            specialties: ['High-energy dogs', 'Reactive dogs', 'Senior dogs', 'Small breeds'],
+            contact: { phone: '(555) 678-9012', email: 'jake@activepaws.com' }
+          },
+          features: [
+            '30-minute neighborhood walk',
+            'One-on-one attention',
+            'Basic obedience reinforcement',
+            'Waste cleanup included',
+            'Fresh water upon return',
+            'GPS tracking available',
+            'Photo updates',
+            'Flexible scheduling'
+          ],
+          gallery: []
+        },
+        '7': {
+          id: '7',
+          name: 'Cat Hotel & Boarding',
+          category: 'BOARDING',
+          description: 'Luxury cat boarding with private suites and play areas. Your cat will enjoy comfortable accommodations, playtime, and personalized attention in a cats-only environment.',
+          price: 85,
+          duration: 1440,
+          provider: {
+            businessName: 'Whiskers Paradise',
+            averageRating: 4.7,
+            totalReviews: 67,
+            isVerified: true,
+            user: { firstName: 'Sophie', lastName: 'Chen' },
+            location: 'Cat Boarding Facility',
+            experience: '8 years of cat boarding and care',
+            specialties: ['Senior cats', 'Medical needs', 'Shy cats', 'Multi-cat families'],
+            contact: { phone: '(555) 789-0123', email: 'sophie@whiskersparadise.com' }
+          },
+          features: [
+            'Private luxury suites',
+            'Climate-controlled environment',
+            'Daily playtime sessions',
+            'Premium food and treats',
+            'Medication administration',
+            'Daily photo updates',
+            'Webcam access available',
+            'Veterinary care on-call'
+          ],
+          gallery: []
+        },
+        '8': {
+          id: '8',
+          name: 'Puppy Training Basics',
+          category: 'TRAINING',
+          description: 'Essential puppy training covering socialization, potty training, basic commands, and bite inhibition. Set your puppy up for success with early positive training.',
+          price: 100,
+          duration: 60,
+          provider: {
+            businessName: 'Puppy School Plus',
+            averageRating: 4.9,
+            totalReviews: 134,
+            isVerified: true,
+            user: { firstName: 'Jessica', lastName: 'Lee' },
+            location: 'Puppy Training Center',
+            experience: '9 years specializing in puppy development',
+            specialties: ['Early socialization', 'Potty training', 'Puppy behavior', 'First-time owners'],
+            contact: { phone: '(555) 890-1234', email: 'jessica@puppyschool.com' }
+          },
+          features: [
+            'Age-appropriate training',
+            'Socialization exercises',
+            'Potty training guidance',
+            'Basic commands (sit, stay, come)',
+            'Bite inhibition training',
+            'Crate training tips',
+            'Puppy play sessions',
+            'Owner education materials'
+          ],
+          gallery: []
+        },
+        '9': {
+          id: '9',
+          name: 'Bird Care & Wellness Check',
+          category: 'VETERINARY_CONSULTATION',
+          description: 'Specialized avian veterinary care including physical examination, wing and nail trimming, nutritional assessment, and behavior consultation for all bird species.',
+          price: 80,
+          duration: 45,
+          provider: {
+            businessName: 'Avian Health Specialists',
+            averageRating: 4.8,
+            totalReviews: 56,
+            isVerified: true,
+            user: { firstName: 'Dr. Rachel', lastName: 'Patel' },
+            location: 'Avian Veterinary Clinic',
+            experience: '11 years of avian medicine',
+            specialties: ['Parrots', 'Exotic birds', 'Avian nutrition', 'Feather disorders'],
+            contact: { phone: '(555) 901-2345', email: 'dr.patel@avianhealth.com' }
+          },
+          features: [
+            'Complete physical examination',
+            'Wing trimming (if requested)',
+            'Nail and beak trimming',
+            'Weight assessment',
+            'Nutritional counseling',
+            'Behavioral consultation',
+            'Disease screening',
+            'Husbandry recommendations'
+          ],
+          gallery: []
+        },
+        '10': {
+          id: '10',
+          name: 'Dog Boarding & Daycare',
+          category: 'BOARDING',
+          description: 'Safe and comfortable boarding for weekend getaways or extended trips. Includes playtime, exercise, and socialization with other friendly dogs in a supervised environment.',
+          price: 150,
+          duration: 2880,
+          provider: {
+            businessName: 'Cozy Pet Hotel',
+            averageRating: 4.4,
+            totalReviews: 92,
+            isVerified: true,
+            user: { firstName: 'Tom', lastName: 'Anderson' },
+            location: 'Pet Boarding Facility',
+            experience: '13 years of pet boarding services',
+            specialties: ['Large dogs', 'Special diets', 'Senior dogs', 'Extended stays'],
+            contact: { phone: '(555) 012-3456', email: 'tom@cozypethotel.com' }
+          },
+          features: [
+            'Comfortable sleeping quarters',
+            'Multiple daily play sessions',
+            'Supervised group play',
+            'Individual attention',
+            'Special diet accommodation',
+            'Medication administration',
+            'Daily exercise and walks',
+            'Photo and video updates'
+          ],
+          gallery: []
+        },
+        '11': {
+          id: '11',
+          name: 'Rabbit & Small Pet Care',
+          category: 'PET_SITTING',
+          description: 'Specialized care for rabbits, guinea pigs, hamsters, and other small pets. Includes feeding, habitat cleaning, exercise time, and health monitoring.',
+          price: 35,
+          duration: 45,
+          provider: {
+            businessName: 'Small Paws Pet Care',
+            averageRating: 4.6,
+            totalReviews: 45,
+            isVerified: true,
+            user: { firstName: 'Lisa', lastName: 'Brown' },
+            location: 'Small Animal Services',
+            experience: '6 years of small pet care',
+            specialties: ['Rabbits', 'Guinea pigs', 'Hamsters', 'Exotic small pets'],
+            contact: { phone: '(555) 123-4567', email: 'lisa@smallpaws.com' }
+          },
+          features: [
+            'Daily feeding and fresh water',
+            'Habitat cleaning',
+            'Exercise and play time',
+            'Health monitoring',
+            'Nail trimming',
+            'Medication if needed',
+            'Enrichment activities',
+            'Photo updates'
+          ],
+          gallery: []
+        },
+        '12': {
+          id: '12',
+          name: 'Aquarium Maintenance Service',
+          category: 'BOARDING',
+          description: 'Weekly aquarium cleaning, water changes, and fish feeding service. Keep your aquatic pets healthy and your tank beautiful with professional maintenance.',
+          price: 40,
+          duration: 60,
+          provider: {
+            businessName: 'AquaCare Services',
+            averageRating: 4.5,
+            totalReviews: 134,
+            isVerified: true,
+            user: { firstName: 'David', lastName: 'Kumar' },
+            location: 'Aquatic Services',
+            experience: '10 years of aquarium maintenance',
+            specialties: ['Freshwater tanks', 'Saltwater aquariums', 'Reef systems', 'Koi ponds'],
+            contact: { phone: '(555) 234-5678', email: 'david@aquacare.com' }
+          },
+          features: [
+            'Water quality testing',
+            'Partial water changes',
+            'Filter cleaning and maintenance',
+            'Algae removal',
+            'Glass cleaning',
+            'Gravel vacuuming',
+            'Equipment inspection',
+            'Fish health assessment'
+          ],
+          gallery: []
+        },
         '13': {
           id: '13',
           name: 'Cattle Veterinary Checkup',
@@ -512,7 +842,15 @@ export default function ServiceDetailsPage() {
               transition={{ delay: 0.2 }}
               className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20"
             >
-              <h2 className="text-xl font-bold text-gray-900 mb-4">About the Provider</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-gray-900">About the Provider</h2>
+                <button
+                  onClick={() => router.push(`/provider/${service.provider.user.firstName.toLowerCase()}-${service.provider.user.lastName.toLowerCase()}`)}
+                  className="text-teal-600 hover:text-teal-800 text-sm font-medium"
+                >
+                  View Full Profile →
+                </button>
+              </div>
               <div className="flex items-start space-x-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
                   <User className="h-8 w-8 text-gray-600" />

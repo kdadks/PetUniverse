@@ -126,11 +126,11 @@ export default function ProviderOnboarding() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
-              Join Our Service Provider Network
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+              Become Every Pet Parent's Trusted Professional
             </h1>
-            <p className="text-xl text-gray-600">
-              Start offering your pet care services to thousands of loving pet owners
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Join our network and connect with thousands of pet parents seeking your expertise
             </p>
           </motion.div>
         </div>

@@ -26,65 +26,46 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        // Test login credentials
-        const testUsers = [
+        // Test accounts (temporary until Supabase is implemented)
+        const testAccounts = [
           {
-            id: 'admin-1',
-            email: 'admin@petuniverse.com',
-            password: 'admin123',
-            firstName: 'Admin',
-            lastName: 'User',
-            role: 'ADMIN',
-            avatar: null
-          },
-          {
-            id: 'owner-1',
-            email: 'owner@test.com',
-            password: 'owner123',
-            firstName: 'Sarah',
-            lastName: 'Johnson',
+            id: 'customer-1',
+            email: 'customer@petuniverse.com',
+            password: 'password123',
+            firstName: 'John',
+            lastName: 'Doe',
             role: 'CUSTOMER',
             avatar: null
           },
           {
             id: 'provider-1',
-            email: 'provider@test.com',
-            password: 'provider123',
-            firstName: 'Dr. Michael',
-            lastName: 'Brown',
+            email: 'provider@petuniverse.com',
+            password: 'password123',
+            firstName: 'Sarah',
+            lastName: 'Johnson',
             role: 'SERVICE_PROVIDER',
+            avatar: null
+          },
+          {
+            id: 'admin-1',
+            email: 'admin@petuniverse.com',
+            password: 'password123',
+            firstName: 'Admin',
+            lastName: 'User',
+            role: 'ADMIN',
             avatar: null
           }
         ]
 
-        // Check test users first
-        const testUser = testUsers.find(user =>
-          user.email === credentials.email && user.password === credentials.password
+        // Check test accounts
+        const user = testAccounts.find(
+          account => account.email === credentials.email && account.password === credentials.password
         )
-
-        if (testUser) {
-          return {
-            id: testUser.id,
-            email: testUser.email,
-            name: `${testUser.firstName} ${testUser.lastName}`,
-            image: testUser.avatar,
-            role: testUser.role
-          }
-        }
-
-        // Then check database users
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email
-          }
-        })
 
         if (!user) {
           return null
         }
 
-        // In a real implementation, you would verify the password here
-        // For now, we'll just check if the user exists
         return {
           id: user.id,
           email: user.email,

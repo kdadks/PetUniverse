@@ -224,4 +224,4 @@ For support, email [support@p4pet.com](mailto:support@p4pet.com) or create an is
 
 ---
 
-**Built with ❤️ for pet lovers everywhere** 🐾
+**Every Pet. Every Need. Every Professional.** 🐾

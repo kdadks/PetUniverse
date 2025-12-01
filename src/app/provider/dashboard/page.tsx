@@ -114,11 +114,18 @@ export default function ProviderDashboard() {
                 Welcome, {session?.user?.name || session?.user?.email}
               </span>
               <Link
-                href="/provider/services"
-                className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 shadow-lg flex items-center space-x-2"
+                href="/provider/dashboard/profile"
+                className="bg-white hover:bg-gray-50 border-2 border-teal-500 text-teal-700 px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2"
+              >
+                <Settings className="h-4 w-4" />
+                <span>Edit Profile</span>
+              </Link>
+              <Link
+                href="/provider/dashboard/services"
+                className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 shadow-lg flex items-center space-x-2"
               >
                 <Plus className="h-4 w-4" />
-                <span>Add Service</span>
+                <span>Manage Services</span>
               </Link>
             </div>
           </div>

@@ -5,6 +5,7 @@ import AuthSessionProvider from "@/components/providers/session-provider";
 import { CurrencyProvider } from "@/lib/useCurrency";
 import GlossyHeader from "@/components/ui/glossy-header";
 import GlossyFooter from "@/components/ui/glossy-footer";
+import MockDataInitializer from "@/components/providers/mock-data-initializer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +18,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pet Universe - One-Stop Pet Care",
-  description: "Your comprehensive digital marketplace for pet care, grooming, veterinary services, and more.",
+  title: "P4Pet - Every Pet. Every Need. Every Professional.",
+  description: "Every pet parent deserves access to every service their pet needs, from every trusted professional. Complete pet care ecosystem connecting you with verified veterinarians, groomers, trainers, and premium products—all in one place.",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 min-h-screen`}
       >
+        <MockDataInitializer />
         <AuthSessionProvider>
           <CurrencyProvider>
             <GlossyHeader />

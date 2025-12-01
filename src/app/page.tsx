@@ -296,12 +296,12 @@ export default function Home() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
             <span className="text-gray-800">
-              Where Every Pet
+              Every Pet. Every Need.
             </span>
             <br />
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
-                Finds Paradise
+                Every Professional.
               </span>
               <motion.div
                 className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 rounded-full shadow-lg"
@@ -319,8 +319,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed font-medium"
           >
-            Connect with trusted pet care professionals, discover premium products,
-            and give your furry friends the love they deserve — all in one place.
+            Every pet parent deserves access to every service their pet needs, from every trusted professional.
+            Your complete pet care ecosystem—all in one place.
           </motion.p>
 
           {/* CTA Buttons */}
