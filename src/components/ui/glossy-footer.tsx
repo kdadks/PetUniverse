@@ -53,9 +53,14 @@ export default function GlossyFooter() {
                 <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center">
                   <Heart className="h-5 w-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold bg-gradient-to-r from-teal-200 to-emerald-200 bg-clip-text text-transparent">
-                  P4Pet
-                </h2>
+                <div className="flex flex-col">
+                  <h2 className="text-xl font-bold bg-gradient-to-r from-teal-200 to-emerald-200 bg-clip-text text-transparent">
+                    P4Pet
+                  </h2>
+                  <span className="text-xs font-medium text-teal-300 -mt-1">
+                    PetCare - All in one place
+                  </span>
+                </div>
               </div>
               <p className="text-teal-100 mb-4 text-sm max-w-md">
                 Your one-stop destination for all pet care needs. Connecting pet owners with trusted services and quality products.

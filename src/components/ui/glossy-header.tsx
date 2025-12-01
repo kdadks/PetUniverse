@@ -93,11 +93,16 @@ export default function GlossyHeader() {
                   </div>
                 </div>
                 <div className="relative overflow-hidden">
-                  <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
-                    P4Pet
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
+                      P4Pet
+                    </span>
+                    <span className="text-[10px] md:text-xs font-medium text-gray-600 -mt-1">
+                      PetCare - All in one place
+                    </span>
+                  </div>
                   {/* Shine sweep effect */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/60 to-transparent -skew-x-12"
                     animate={{
                       x: ['-100%', '200%'],
