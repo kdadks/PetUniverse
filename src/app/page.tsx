@@ -563,7 +563,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative pt-16 pb-24 overflow-hidden">
         {/* Light Teal Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50" />
         

@@ -23,6 +23,11 @@
   }
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   background: linear-gradient(135deg, var(--teal-light) 0%, var(--cyan-light) 50%, var(--emerald-light) 100%);
   color: var(--foreground);
