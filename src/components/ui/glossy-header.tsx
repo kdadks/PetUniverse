@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sparkles, ChevronRight } from 'lucide-react'
+import { Menu, X, Sparkles, ChevronRight, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import CountrySelector from '@/components/CountrySelector'
 
@@ -21,6 +21,7 @@ export default function GlossyHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState('/')
+  const [showLoginDropdown, setShowLoginDropdown] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -177,12 +178,65 @@ export default function GlossyHeader() {
                 </div>
               ) : (
                 <>
-                  <Link
-                    href="/auth/signin"
-                    className="hidden md:block text-gray-700 hover:text-teal-600 font-medium transition-colors duration-300 text-sm"
-                  >
-                    Sign In
-                  </Link>
+                  {/* Sign In Dropdown */}
+                  <div className="hidden md:block relative">
+                    <button
+                      onClick={() => setShowLoginDropdown(!showLoginDropdown)}
+                      onBlur={() => setTimeout(() => setShowLoginDropdown(false), 200)}
+                      className="flex items-center space-x-1 text-gray-700 hover:text-teal-600 font-medium transition-colors duration-300 text-sm"
+                    >
+                      <span>Sign In</span>
+                      <ChevronDown className={cn(
+                        "h-4 w-4 transition-transform duration-200",
+                        showLoginDropdown && "rotate-180"
+                      )} />
+                    </button>
+
+                    <AnimatePresence>
+                      {showLoginDropdown && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute right-0 mt-2 w-56 bg-white/95 backdrop-blur-lg rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50"
+                        >
+                          <div className="py-2">
+                            <Link
+                              href="/auth/signin"
+                              className="flex items-center space-x-3 px-4 py-3 hover:bg-teal-50 transition-colors duration-200"
+                            >
+                              <span className="text-xl">👤</span>
+                              <div className="flex-1">
+                                <div className="font-medium text-gray-900">Customer Login</div>
+                                <div className="text-xs text-gray-500">For pet owners</div>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/provider/login"
+                              className="flex items-center space-x-3 px-4 py-3 hover:bg-blue-50 transition-colors duration-200"
+                            >
+                              <span className="text-xl">💼</span>
+                              <div className="flex-1">
+                                <div className="font-medium text-gray-900">Provider Login</div>
+                                <div className="text-xs text-gray-500">For service providers</div>
+                              </div>
+                            </Link>
+                            <Link
+                              href="/admin/login"
+                              className="flex items-center space-x-3 px-4 py-3 hover:bg-red-50 transition-colors duration-200"
+                            >
+                              <span className="text-xl">🛡️</span>
+                              <div className="flex-1">
+                                <div className="font-medium text-gray-900">Admin Login</div>
+                                <div className="text-xs text-gray-500">For administrators</div>
+                              </div>
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
 
                   {/* Glowing Get Started Button */}
                   <motion.div
@@ -361,25 +415,61 @@ export default function GlossyHeader() {
                       </div>
                     ) : (
                       <div className="space-y-2">
+                        <div className="px-2 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Login As
+                        </div>
                         <Link
                           href="/auth/signin"
                           onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center justify-between px-4 py-3.5 rounded-xl hover:bg-gray-100 text-gray-700 transition-all duration-300"
+                          className="flex items-center justify-between px-4 py-3.5 rounded-xl hover:bg-teal-50 text-gray-700 transition-all duration-300"
                         >
                           <span className="flex items-center space-x-3">
                             <span className="text-lg">👤</span>
-                            <span className="font-medium">Sign In</span>
+                            <div className="flex flex-col">
+                              <span className="font-medium">Customer</span>
+                              <span className="text-xs text-gray-500">For pet owners</span>
+                            </div>
                           </span>
                           <ChevronRight className="h-4 w-4 text-gray-400" />
                         </Link>
                         <Link
-                          href="/auth/signup"
+                          href="/provider/login"
                           onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center justify-center px-4 py-3.5 font-semibold text-white rounded-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 shadow-lg shadow-teal-500/25 transition-all duration-300"
+                          className="flex items-center justify-between px-4 py-3.5 rounded-xl hover:bg-blue-50 text-gray-700 transition-all duration-300"
                         >
-                          <Sparkles className="h-4 w-4 mr-2" />
-                          Get Started Free
+                          <span className="flex items-center space-x-3">
+                            <span className="text-lg">💼</span>
+                            <div className="flex flex-col">
+                              <span className="font-medium">Provider</span>
+                              <span className="text-xs text-gray-500">For service providers</span>
+                            </div>
+                          </span>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
                         </Link>
+                        <Link
+                          href="/admin/login"
+                          onClick={() => setIsMenuOpen(false)}
+                          className="flex items-center justify-between px-4 py-3.5 rounded-xl hover:bg-red-50 text-gray-700 transition-all duration-300"
+                        >
+                          <span className="flex items-center space-x-3">
+                            <span className="text-lg">🛡️</span>
+                            <div className="flex flex-col">
+                              <span className="font-medium">Admin</span>
+                              <span className="text-xs text-gray-500">For administrators</span>
+                            </div>
+                          </span>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                        </Link>
+                        <div className="pt-2">
+                          <Link
+                            href="/auth/signup"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center justify-center px-4 py-3.5 font-semibold text-white rounded-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 shadow-lg shadow-teal-500/25 transition-all duration-300"
+                          >
+                            <Sparkles className="h-4 w-4 mr-2" />
+                            Get Started Free
+                          </Link>
+                        </div>
                       </div>
                     )}
                   </div>

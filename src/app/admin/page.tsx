@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
+import AdminLayout from '@/components/admin/AdminLayout'
 import {
   Users,
   Building2,
@@ -380,16 +381,16 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50">
-      <div className="bg-teal-50/50 backdrop-blur-sm shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-4">
-              <Shield className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Admin Dashboard
-              </h1>
-            </div>
+    <AdminLayout>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <Shield className="h-8 w-8 text-blue-600" />
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Admin Dashboard
+            </h1>
+          </div>
             <div className="flex items-center space-x-4">
               <select
                 value={selectedTimeframe}
@@ -407,10 +408,8 @@ export default function AdminDashboard() {
             </div>
           </div>
         </div>
-      </div>
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
+        {/* Content */}
           {/* Alert Bar */}
           {stats.pendingApprovals > 0 && (
             <motion.div
@@ -1724,7 +1723,7 @@ export default function AdminDashboard() {
             </div>
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </AdminLayout>
   )
 }
