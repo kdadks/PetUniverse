@@ -2,8 +2,9 @@
 
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Sparkles, ArrowRight, Play, Heart, Star, Zap, Shield, Clock, Scissors, Stethoscope, Bone, Home as HomeIcon } from 'lucide-react'
 
@@ -82,6 +83,9 @@ const AnimatedWaves = () => {
 
 // Rolling Background Images Component
 const RollingBackgroundImages = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const loadedCount = useRef(0)
+  
   const images = [
     '/images/Adorable Sudsy Australian Shepherd Puppies.png',
     '/images/Cozy Pet Store Interior with Fluffy White Dog.png',
@@ -96,20 +100,49 @@ const RollingBackgroundImages = () => {
   // Duplicate images for seamless loop
   const allImages = [...images, ...images]
 
+  useEffect(() => {
+    // Preload all images
+    let loadedImages = 0
+    const totalImages = images.length
+
+    images.forEach((imageSrc) => {
+      const img = new window.Image()
+      img.onload = () => {
+        loadedImages += 1
+        if (loadedImages === totalImages) {
+          setImagesLoaded(true)
+        }
+      }
+      img.onerror = () => {
+        loadedImages += 1
+        if (loadedImages === totalImages) {
+          // Start animation even if some images fail to load
+          setImagesLoaded(true)
+        }
+      }
+      img.src = imageSrc
+    })
+
+    // Fallback: start animation after 3 seconds if images are still loading
+    const timeout = setTimeout(() => {
+      setImagesLoaded(true)
+    }, 3000)
+
+    return () => clearTimeout(timeout)
+  }, [])
+
   return (
     <div className="absolute inset-0 overflow-hidden">
       <motion.div
         className="flex h-full"
-        animate={{
-          x: ['0%', '-50%'],
-        }}
+        animate={imagesLoaded ? { x: ['0%', '-50%'] } : { x: '0%' }}
         transition={{
-          x: {
+          x: imagesLoaded ? {
             repeat: Infinity,
             repeatType: "loop",
             duration: 40,
             ease: "linear",
-          },
+          } : { duration: 0 },
         }}
       >
         {allImages.map((img, index) => (
@@ -122,6 +155,8 @@ const RollingBackgroundImages = () => {
               src={img}
               alt={`Pet ${index + 1}`}
               className="w-full h-full object-cover opacity-40"
+              loading="eager"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-teal-100/40 via-transparent to-cyan-100/40" />
           </div>
