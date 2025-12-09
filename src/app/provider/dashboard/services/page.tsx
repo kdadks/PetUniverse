@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import ProviderLayout from '@/components/provider/ProviderLayout'
 import {
   Plus,
   Edit,
@@ -15,11 +16,11 @@ import {
   Clock,
   DollarSign,
   Tag,
-  ArrowLeft,
   Save,
   X,
   Upload,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Package
 } from 'lucide-react'
 import { useCurrency } from '@/lib/useCurrency'
 
@@ -247,18 +248,15 @@ export default function ProviderServicesManagement() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16 pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <ProviderLayout>
+      <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <button
-              onClick={() => router.push('/provider/dashboard')}
-              className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span>Back to Dashboard</span>
-            </button>
+            <Package className="h-8 w-8 text-teal-600" />
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-teal-600 via-emerald-600 to-cyan-600 bg-clip-text text-transparent">
+              My Services
+            </h1>
           </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -424,10 +422,9 @@ export default function ProviderServicesManagement() {
             <p className="text-gray-500 text-lg">No services found</p>
           </div>
         )}
-      </div>
 
-      {/* Create/Edit Service Modal */}
-      <AnimatePresence>
+        {/* Create/Edit Service Modal */}
+        <AnimatePresence>
         {isModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -609,7 +606,8 @@ export default function ProviderServicesManagement() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+        </AnimatePresence>
+      </div>
+    </ProviderLayout>
   )
 }

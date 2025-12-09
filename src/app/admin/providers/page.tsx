@@ -166,14 +166,22 @@ export default function ServiceProvidersManagement() {
             </h1>
             <p className="text-gray-600 mt-1">Review and approve service provider applications</p>
           </div>
-          {pendingCount > 0 && (
-            <div className="flex items-center gap-2 px-4 py-2 bg-yellow-100 border border-yellow-200 rounded-lg">
-              <AlertCircle className="h-5 w-5 text-yellow-600" />
-              <span className="text-sm font-medium text-yellow-800">
-                {pendingCount} pending approval{pendingCount > 1 ? 's' : ''}
-              </span>
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            {pendingCount > 0 && (
+              <div className="flex items-center gap-2 px-4 py-2 bg-yellow-100 border border-yellow-200 rounded-lg">
+                <AlertCircle className="h-5 w-5 text-yellow-600" />
+                <span className="text-sm font-medium text-yellow-800">
+                  {pendingCount} pending approval{pendingCount > 1 ? 's' : ''}
+                </span>
+              </div>
+            )}
+            <Link
+              href="/admin/providers/verification"
+              className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-medium"
+            >
+              Verify Providers
+            </Link>
+          </div>
         </div>
 
         {/* Stats Cards */}

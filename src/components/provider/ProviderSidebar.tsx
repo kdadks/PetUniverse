@@ -5,21 +5,20 @@ import { usePathname, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import {
   LayoutDashboard,
-  Users,
-  Briefcase,
-  ShoppingBag,
-  Package,
   Calendar,
-  FileText,
+  Package,
+  Users,
+  Star,
+  TrendingUp,
   Settings,
   ChevronLeft,
   ChevronRight,
-  ShieldCheck,
-  UserCog,
-  Store,
-  TrendingUp,
+  Briefcase,
   LogOut,
-  User
+  User,
+  MessageSquare,
+  DollarSign,
+  Clock
 } from 'lucide-react'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -28,79 +27,73 @@ import { useSession, signOut } from 'next-auth/react'
 const menuItems = [
   {
     title: 'Dashboard',
-    href: '/admin',
+    href: '/provider/dashboard',
     icon: LayoutDashboard,
     badge: null
   },
   {
-    title: 'User Management',
-    href: '/admin/users',
-    icon: Users,
-    badge: null
-  },
-  {
-    title: 'Customer Management',
-    href: '/admin/customers',
-    icon: UserCog,
-    badge: null
-  },
-  {
-    title: 'Service Providers',
-    href: '/admin/providers',
-    icon: Briefcase,
+    title: 'Bookings',
+    href: '/provider/dashboard/bookings',
+    icon: Calendar,
     badge: 'pending'
   },
   {
-    title: 'Services',
-    href: '/admin/services',
-    icon: ShieldCheck,
-    badge: null
-  },
-  {
-    title: 'Bookings',
-    href: '/admin/bookings',
-    icon: Calendar,
-    badge: null
-  },
-  {
-    title: 'Marketplace',
-    href: '/admin/marketplace',
-    icon: Store,
-    badge: null
-  },
-  {
-    title: 'Inventory',
-    href: '/admin/inventory',
+    title: 'My Services',
+    href: '/provider/dashboard/services',
     icon: Package,
     badge: null
   },
   {
-    title: 'Orders',
-    href: '/admin/orders',
-    icon: ShoppingBag,
+    title: 'Clients',
+    href: '/provider/dashboard/clients',
+    icon: Users,
+    badge: null
+  },
+  {
+    title: 'Reviews',
+    href: '/provider/dashboard/reviews',
+    icon: Star,
+    badge: null
+  },
+  {
+    title: 'Earnings',
+    href: '/provider/dashboard/earnings',
+    icon: DollarSign,
+    badge: null
+  },
+  {
+    title: 'Schedule',
+    href: '/provider/dashboard/schedule',
+    icon: Clock,
+    badge: null
+  },
+  {
+    title: 'Messages',
+    href: '/provider/dashboard/messages',
+    icon: MessageSquare,
     badge: null
   },
   {
     title: 'Analytics',
-    href: '/admin/analytics',
+    href: '/provider/dashboard/analytics',
     icon: TrendingUp,
     badge: null
   },
   {
-    title: 'Reports',
-    href: '/admin/reports',
-    icon: FileText,
+    title: 'Profile',
+    href: '/provider/dashboard/profile',
+    icon: User,
     badge: null
   },
   {
     title: 'Settings',
-    href: '/admin/settings',
+    href: '/provider/dashboard/settings',
     icon: Settings,
     badge: null
   }
 ]
 
-export default function AdminSidebar() {
+export default function ProviderSidebar() {
   const pathname = usePathname()
   const router = useRouter()
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -109,9 +102,8 @@ export default function AdminSidebar() {
 
   const handleSignOut = async () => {
     setIsSigningOut(true)
-    // Use redirect: false to handle the redirect manually for faster UX
     await signOut({ redirect: false })
-    router.push('/admin/login')
+    router.push('/provider/login')
     router.refresh()
   }
 
@@ -120,12 +112,12 @@ export default function AdminSidebar() {
       initial={{ x: -300 }}
       animate={{ x: 0, width: isCollapsed ? 80 : 280 }}
       transition={{ duration: 0.3 }}
-      className="fixed left-0 top-0 bottom-0 bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 border-r border-white/10 overflow-hidden z-40"
+      className="fixed left-0 top-0 bottom-0 bg-gradient-to-b from-slate-900 via-teal-900 to-slate-900 border-r border-white/10 overflow-hidden z-40"
     >
       {/* Collapse Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute -right-3 top-6 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-full p-1.5 shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+        className="absolute -right-3 top-6 bg-gradient-to-r from-teal-500 to-emerald-600 text-white rounded-full p-1.5 shadow-lg hover:shadow-xl transition-all duration-300 z-50"
       >
         {isCollapsed ? (
           <ChevronRight className="h-4 w-4" />
@@ -138,18 +130,18 @@ export default function AdminSidebar() {
       <div className="px-4 py-6 border-b border-white/10">
         {!isCollapsed ? (
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center">
-              <ShieldCheck className="h-6 w-6 text-white" />
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
+              <Briefcase className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-white font-bold text-lg">P4Pet Admin</h2>
-              <p className="text-gray-400 text-xs">Management Portal</p>
+              <h2 className="text-white font-bold text-lg">P4Pet Provider</h2>
+              <p className="text-gray-400 text-xs">Service Portal</p>
             </div>
           </div>
         ) : (
           <div className="flex justify-center">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center">
-              <ShieldCheck className="h-6 w-6 text-white" />
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
+              <Briefcase className="h-6 w-6 text-white" />
             </div>
           </div>
         )}
@@ -159,7 +151,7 @@ export default function AdminSidebar() {
       <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pt-4 pb-20">
         <nav className="px-3 space-y-1">
           {menuItems.map((item) => {
-            const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
+            const isActive = pathname === item.href || (item.href !== '/provider/dashboard' && pathname.startsWith(item.href))
             const Icon = item.icon
 
             return (
@@ -169,15 +161,15 @@ export default function AdminSidebar() {
                 className={cn(
                   "flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-300 group relative",
                   isActive
-                    ? "bg-gradient-to-r from-red-500/20 to-pink-600/20 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-teal-500/20 to-emerald-600/20 text-white shadow-lg"
                     : "text-gray-400 hover:bg-white/5 hover:text-white"
                 )}
               >
                 {/* Active Indicator */}
                 {isActive && (
                   <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-pink-600/20 rounded-xl border border-red-500/30"
+                    layoutId="activeProviderTab"
+                    className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-emerald-600/20 rounded-xl border border-teal-500/30"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -200,7 +192,7 @@ export default function AdminSidebar() {
                   >
                     <span className="font-medium text-sm">{item.title}</span>
                     {item.badge && (
-                      <span className="px-2 py-0.5 text-xs font-semibold bg-yellow-500/20 text-yellow-300 rounded-full border border-yellow-500/30">
+                      <span className="px-2 py-0.5 text-xs font-semibold bg-orange-500/20 text-orange-300 rounded-full border border-orange-500/30">
                         {item.badge}
                       </span>
                     )}
@@ -212,7 +204,7 @@ export default function AdminSidebar() {
                   <div className="absolute left-full ml-2 px-3 py-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50 shadow-xl">
                     {item.title}
                     {item.badge && (
-                      <span className="ml-2 px-2 py-0.5 text-xs bg-yellow-500/20 text-yellow-300 rounded-full">
+                      <span className="ml-2 px-2 py-0.5 text-xs bg-orange-500/20 text-orange-300 rounded-full">
                         {item.badge}
                       </span>
                     )}
@@ -231,16 +223,16 @@ export default function AdminSidebar() {
             {/* User Info */}
             <div className="flex items-center gap-3 px-3 py-2 bg-white/5 rounded-lg">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
                   <User className="h-5 w-5 text-white" />
                 </div>
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-white truncate">
-                  {session?.user?.name || session?.user?.email?.split('@')[0] || 'Admin'}
+                  {session?.user?.name || session?.user?.email?.split('@')[0] || 'Provider'}
                 </p>
                 <p className="text-xs text-gray-400 truncate">
-                  {session?.user?.role || 'Administrator'}
+                  Service Provider
                 </p>
               </div>
             </div>
@@ -263,7 +255,7 @@ export default function AdminSidebar() {
           <div className="p-4 space-y-3">
             {/* Collapsed User Avatar */}
             <div className="flex justify-center">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
                 <User className="h-5 w-5 text-white" />
               </div>
             </div>

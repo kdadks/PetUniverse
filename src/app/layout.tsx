@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthSessionProvider from "@/components/providers/session-provider";
 import { CurrencyProvider } from "@/lib/useCurrency";
-import GlossyHeader from "@/components/ui/glossy-header";
-import GlossyFooter from "@/components/ui/glossy-footer";
+import ConditionalLayout from "@/components/providers/conditional-layout";
 import MockDataInitializer from "@/components/providers/mock-data-initializer";
 
 const geistSans = Geist({
@@ -41,11 +40,9 @@ export default function RootLayout({
         <MockDataInitializer />
         <AuthSessionProvider>
           <CurrencyProvider>
-            <GlossyHeader />
-            <main className="pt-16">
+            <ConditionalLayout>
               {children}
-            </main>
-            <GlossyFooter />
+            </ConditionalLayout>
           </CurrencyProvider>
         </AuthSessionProvider>
       </body>
