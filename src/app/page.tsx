@@ -80,146 +80,55 @@ const AnimatedWaves = () => {
   )
 }
 
-// Teal Glow Effect Component
-const TealGlow = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Central Glow */}
-      <motion.div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        {/* Outer glow */}
-        <motion.div
-          className="absolute -inset-32 md:-inset-48 bg-gradient-radial from-teal-300/30 via-cyan-400/15 to-transparent rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* Inner bright core */}
-        <motion.div
-          className="absolute -inset-16 md:-inset-24 bg-gradient-radial from-cyan-200/40 via-teal-300/20 to-transparent rounded-full blur-2xl"
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
-
-      {/* Subtle Light Rays */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute top-0 left-1/2 h-full origin-bottom"
-          style={{
-            width: '2px',
-            background: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(20,184,166,${0.08 + i * 0.01}) 30%, rgba(6,182,212,${0.1 + i * 0.01}) 60%, rgba(255,255,255,0) 100%)`,
-            transform: `translateX(-50%) rotate(${i * 60 - 150}deg)`,
-          }}
-          animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scaleY: [0.8, 1, 0.8],
-          }}
-          transition={{
-            duration: 4 + i * 0.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.3,
-          }}
-        />
-      ))}
-
-      {/* Floating particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={`particle-${i}`}
-          className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full bg-teal-400/30"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [-20, 20, -20],
-            x: [-10, 10, -10],
-            opacity: [0, 0.4, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 5,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
-
-// Floating Pet Icons
-const FloatingPetIcons = () => {
-  const pets = [
-    // Left side pets - float right
-    { emoji: '🐕', left: 3, top: 15, direction: 'right' },
-    { emoji: '🐈', left: 8, top: 35, direction: 'up' },
-    { emoji: '🐠', left: 5, top: 55, direction: 'right' },
-    { emoji: '🐴', left: 10, top: 75, direction: 'down' },
-    { emoji: '🦆', left: 2, top: 45, direction: 'right' },
-    { emoji: '🐰', left: 12, top: 25, direction: 'up' },
-    { emoji: '🐖', left: 6, top: 65, direction: 'right' },
-    { emoji: '🐑', left: 14, top: 85, direction: 'down' },
-    // Right side pets - float left
-    { emoji: '🐦', left: 88, top: 20, direction: 'left' },
-    { emoji: '🐹', left: 92, top: 40, direction: 'up' },
-    { emoji: '🐢', left: 86, top: 60, direction: 'left' },
-    { emoji: '🐄', left: 90, top: 80, direction: 'down' },
-    { emoji: '🦜', left: 94, top: 30, direction: 'left' },
-    { emoji: '🐓', left: 85, top: 50, direction: 'up' },
-    { emoji: '🐐', left: 96, top: 70, direction: 'left' },
-    { emoji: '🐫', left: 88, top: 15, direction: 'down' },
+// Rolling Background Images Component
+const RollingBackgroundImages = () => {
+  const images = [
+    '/images/Adorable Sudsy Australian Shepherd Puppies.png',
+    '/images/Cozy Pet Store Interior with Fluffy White Dog.png',
+    '/images/Interspecies Friends.png',
+    '/images/alec-favale-Ivzo69e18nk-unsplash.jpg',
+    '/images/jeremy-mowery-WA00ShDnupM-unsplash.jpg',
+    '/images/nick-fewings-8BV5u6XyCzk-unsplash.jpg',
+    '/images/random-institute-wn2BLotE8oY-unsplash.jpg',
+    '/images/tran-mau-tri-tam-7QjU_u2vGDs-unsplash.jpg',
   ]
 
-  const getAnimation = (direction: string) => {
-    switch (direction) {
-      case 'up':
-        return { y: [0, -25, 0], x: [-5, 5, -5], rotate: [-3, 3, -3] }
-      case 'down':
-        return { y: [0, 25, 0], x: [5, -5, 5], rotate: [3, -3, 3] }
-      case 'left':
-        return { x: [0, -25, 0], y: [-5, 5, -5], rotate: [-5, 5, -5] }
-      case 'right':
-        return { x: [0, 25, 0], y: [5, -5, 5], rotate: [5, -5, 5] }
-      default:
-        return { y: [-15, 15, -15], x: [-10, 10, -10], rotate: [-5, 5, -5] }
-    }
-  }
-  
+  // Duplicate images for seamless loop
+  const allImages = [...images, ...images]
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {pets.map((pet, i) => (
-        <motion.div
-          key={i}
-          className="absolute text-4xl md:text-5xl drop-shadow-lg"
-          style={{
-            left: `${pet.left}%`,
-            top: `${pet.top}%`,
-          }}
-          animate={getAnimation(pet.direction)}
-          transition={{
-            duration: 4 + (i % 3),
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        className="flex h-full"
+        animate={{
+          x: ['0%', '-50%'],
+        }}
+        transition={{
+          x: {
             repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.2,
-          }}
-        >
-          {pet.emoji}
-        </motion.div>
-      ))}
+            repeatType: "loop",
+            duration: 40,
+            ease: "linear",
+          },
+        }}
+      >
+        {allImages.map((img, index) => (
+          <div
+            key={index}
+            className="relative flex-shrink-0 h-full"
+            style={{ width: `${100 / images.length}%` }}
+          >
+            <img
+              src={img}
+              alt={`Pet ${index + 1}`}
+              className="w-full h-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-100/40 via-transparent to-cyan-100/40" />
+          </div>
+        ))}
+      </motion.div>
+      {/* Overlay gradient for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-teal-50/40 via-cyan-50/20 to-emerald-50/40" />
     </div>
   )
 }
@@ -310,32 +219,10 @@ export default function Home() {
 
   return (
     <div className="relative overflow-visible">
-      {/* Hero Section with Teal Glow Effect */}
-      <section className="relative h-[70vh] md:h-[75vh] flex items-center justify-center overflow-visible pt-32 pb-24" style={{ zIndex: 10 }}>
-        {/* Light Teal Gradient Background */}
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          style={{ y }}
-        >
-          {/* Base light teal gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-teal-100 via-cyan-50 to-emerald-50" />
-          
-          {/* Subtle overlay gradients for depth */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-teal-200/30 via-cyan-100/20 to-emerald-100/30" />
-          <div className="absolute inset-0 bg-gradient-to-bl from-cyan-200/20 via-transparent to-teal-100/20" />
-          
-          {/* Bottom glow */}
-          <div className="absolute bottom-1/4 left-0 right-0 h-1/2 bg-gradient-to-t from-teal-100/40 via-cyan-50/20 to-transparent" />
-          
-          {/* Top subtle tint */}
-          <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-teal-200/30 to-transparent" />
-        </motion.div>
-
-        {/* Teal Glow Effect */}
-        <TealGlow />
-
-        {/* Floating Pet Icons */}
-        <FloatingPetIcons />
+      {/* Hero Section with Rolling Background Images */}
+      <section className="relative h-[70vh] md:h-[75vh] flex items-center justify-center overflow-visible pt-0 pb-24 -mt-16" style={{ zIndex: 10 }}>
+        {/* Rolling Background Images */}
+        <RollingBackgroundImages />
 
         {/* Hero Content */}
         <motion.div
@@ -347,18 +234,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight drop-shadow-lg"
           >
-            <span className="text-gray-800">
+            <span className="text-gray-900">
               Every Pet. Every Need.
             </span>
             <br />
             <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-700 via-cyan-700 to-emerald-700 bg-clip-text text-transparent">
                 Every Professional.
               </span>
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 rounded-full shadow-lg"
+                className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 rounded-full shadow-lg"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -371,21 +258,21 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3, delay: 0.15 }}
-            className="text-base md:text-lg text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-gray-800 mb-6 max-w-2xl mx-auto leading-relaxed drop-shadow"
           >
             Every pet parent deserves access to every service their pet needs, from every trusted professional.
             <br />
-            <span className="inline-flex flex-wrap items-center justify-center gap-3 mt-3 text-sm font-semibold text-teal-700">
-              <span className="flex items-center gap-1">
+            <span className="inline-flex flex-wrap items-center justify-center gap-3 mt-3 text-sm font-semibold text-teal-800">
+              <span className="flex items-center gap-1 bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full">
                 <Heart className="h-4 w-4" /> 10K+ Happy Pets
               </span>
-              <span className="text-teal-300">•</span>
-              <span className="flex items-center gap-1">
+              <span className="text-teal-400">•</span>
+              <span className="flex items-center gap-1 bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full">
                 <Shield className="h-4 w-4" /> 500+ Providers
               </span>
-              <span className="text-teal-300">•</span>
-              <span className="flex items-center gap-1">
-                <Star className="h-4 w-4 fill-teal-600" /> 4.9 Rating
+              <span className="text-teal-400">•</span>
+              <span className="flex items-center gap-1 bg-white/70 backdrop-blur-sm px-3 py-1 rounded-full">
+                <Star className="h-4 w-4 fill-teal-700" /> 4.9 Rating
               </span>
             </span>
           </motion.p>

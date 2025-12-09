@@ -92,7 +92,12 @@ export default function ServiceDetailsPage() {
             'Teeth brushing', 'Full coat brushing and de-shedding', 'Sanitary trim',
             'Blow dry and styling', 'Complimentary nail polish'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80',
+            'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80',
+            'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80',
+            'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80'
+          ]
         },
         '2': {
           id: '2',
@@ -122,7 +127,12 @@ export default function ServiceDetailsPage() {
             'Stress-free handling techniques',
             'Lion cut or breed-specific styling'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&q=80',
+            'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80',
+            'https://images.unsplash.com/photo-1573865526739-10c1dd4e1f43?w=800&q=80',
+            'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=800&q=80'
+          ]
         },
         '3': {
           id: '3',
@@ -152,7 +162,12 @@ export default function ServiceDetailsPage() {
             'Behavioral consultation',
             'Follow-up care instructions'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80',
+            'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800&q=80',
+            'https://images.unsplash.com/photo-1581888227599-779811939961?w=800&q=80',
+            'https://images.unsplash.com/photo-1611915387288-fd8d2f5f928b?w=800&q=80'
+          ]
         },
         '4': {
           id: '4',
@@ -182,7 +197,12 @@ export default function ServiceDetailsPage() {
             'Owner education and coaching',
             'Progress tracking and reports'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1587764379873-97837921fd44?w=800&q=80',
+            'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800&q=80',
+            'https://images.unsplash.com/photo-1568572933382-74d440642117?w=800&q=80',
+            'https://images.unsplash.com/photo-1612536181359-7d87ce7d96eb?w=800&q=80'
+          ]
         },
         '5': {
           id: '5',
@@ -212,7 +232,12 @@ export default function ServiceDetailsPage() {
             'Photo updates',
             'Overnight stays available'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80',
+            'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800&q=80',
+            'https://images.unsplash.com/photo-1444212477490-ca407925329e?w=800&q=80',
+            'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&q=80'
+          ]
         },
         '6': {
           id: '6',
@@ -242,7 +267,12 @@ export default function ServiceDetailsPage() {
             'Photo updates',
             'Flexible scheduling'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&q=80',
+            'https://images.unsplash.com/photo-1601758124277-f0086cd5de61?w=800&q=80',
+            'https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?w=800&q=80',
+            'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80'
+          ]
         },
         '7': {
           id: '7',
@@ -272,7 +302,12 @@ export default function ServiceDetailsPage() {
             'Webcam access available',
             'Veterinary care on-call'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1573865526739-10c1dd4e1f43?w=800&q=80',
+            'https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?w=800&q=80',
+            'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80',
+            'https://images.unsplash.com/photo-1615789591457-74a63395c990?w=800&q=80'
+          ]
         },
         '8': {
           id: '8',
@@ -302,7 +337,12 @@ export default function ServiceDetailsPage() {
             'Puppy play sessions',
             'Owner education materials'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=800&q=80',
+            'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=800&q=80',
+            'https://images.unsplash.com/photo-1587764379873-97837921fd44?w=800&q=80',
+            'https://images.unsplash.com/photo-1558929996-da64ba858215?w=800&q=80'
+          ]
         },
         '9': {
           id: '9',
@@ -332,7 +372,12 @@ export default function ServiceDetailsPage() {
             'Disease screening',
             'Husbandry recommendations'
           ],
-          gallery: []
+          gallery: [
+            'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=800&q=80',
+            'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=800&q=80',
+            'https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=800&q=80',
+            'https://images.unsplash.com/photo-1501706362039-c06b2d715385?w=800&q=80'
+          ]
         },
         '10': {
           id: '10',
@@ -816,6 +861,29 @@ export default function ServiceDetailsPage() {
 
               <p className="text-gray-700 leading-relaxed">{service.description}</p>
             </motion.div>
+
+            {/* Gallery */}
+            {service.gallery && service.gallery.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 }}
+                className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 mb-6"
+              >
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Gallery</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {service.gallery.map((image, index) => (
+                    <div key={index} className="aspect-square rounded-lg overflow-hidden">
+                      <img
+                        src={image}
+                        alt={`${service.name} ${index + 1}`}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
             {/* Features */}
             <motion.div

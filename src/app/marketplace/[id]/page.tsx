@@ -88,7 +88,12 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'White',
             weight: '8 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1573865526739-10c1dd4e1f43?w=800&q=80',
+              'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80',
+              'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80',
+              'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800&q=80'
+            ],
             description: 'Luna is a beautiful, gentle Persian cat with the softest white fur you\'ve ever felt. She loves to be petted and will purr contentedly in your lap for hours. She\'s great with children and gets along well with other cats.',
             temperament: ['Gentle', 'Affectionate', 'Calm', 'Social'],
             healthRecords: [],
@@ -127,7 +132,12 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'Black and White',
             weight: '1200 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80',
+              'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80',
+              'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=800&q=80',
+              'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=800&q=80'
+            ],
             description: 'Daisy is a healthy, productive Holstein dairy cow with excellent milk production. She has a gentle temperament and is easy to handle. Recently freshened and currently in peak production. Great for family dairy farms or homesteaders.',
             temperament: ['Gentle', 'Calm', 'Easy to handle', 'Good milker'],
             healthRecords: [],
@@ -165,7 +175,12 @@ export default function MarketplaceDetailsPage() {
             gender: 'MALE',
             color: 'Bay',
             weight: '900 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80',
+              'https://images.unsplash.com/photo-1551817958-11e0f7bbea4a?w=800&q=80',
+              'https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?w=800&q=80',
+              'https://images.unsplash.com/photo-1534960282920-bb5783c7f090?w=800&q=80'
+            ],
             description: 'Thunder is a magnificent Arabian gelding with excellent confirmation and athletic ability. Well-trained for both English and Western riding. Great on trails and in the arena. Very responsive and willing to please.',
             temperament: ['Athletic', 'Responsive', 'Gentle', 'Intelligent'],
             healthRecords: [],
@@ -204,7 +219,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'Brown and white',
             weight: '150 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80',
+              'https://images.unsplash.com/photo-1550852382-d86c3fb05c88?w=800&q=80',
+              'https://images.unsplash.com/photo-1567137137831-4f2b87f11efd?w=800&q=80'
+            ],
             description: 'Buttercup is a sweet Nubian doe in excellent health. She is friendly, enjoys human interaction, and is great with children. Currently not pregnant but has been a good mother in the past. Excellent milk producer with high butterfat content.',
             temperament: ['Friendly', 'Gentle', 'Social', 'Good mother'],
             healthRecords: [],
@@ -241,7 +260,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'White',
             weight: '120 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80',
+              'https://images.unsplash.com/photo-1588507728669-c2e34410c8dc?w=800&q=80',
+              'https://images.unsplash.com/photo-1579070831063-67e0f55ebb06?w=800&q=80'
+            ],
             description: 'Snowball is a beautiful young Merino ewe with exceptional wool quality. She has a gentle disposition and is easy to handle. Perfect for wool production or breeding. She has excellent genetics from award-winning bloodlines.',
             temperament: ['Gentle', 'Calm', 'Docile', 'Flock-oriented'],
             healthRecords: [],
@@ -278,7 +301,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'MALE',
             color: 'Red',
             weight: '1800 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80',
+              'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80',
+              'https://images.unsplash.com/photo-1589923188900-85dae523342b?w=800&q=80'
+            ],
             description: 'Duke is a well-trained working ox with experience in logging and farm work. He is strong, reliable, and responds well to verbal commands. Great for traditional farming methods or educational demonstrations.',
             temperament: ['Strong', 'Reliable', 'Well-trained', 'Calm'],
             healthRecords: [],
@@ -315,7 +342,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'Dark Gray',
             weight: '1500 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=800&q=80',
+              'https://images.unsplash.com/photo-1563460065-564fa97e2fe1?w=800&q=80',
+              'https://images.unsplash.com/photo-1580986234308-1ab1e9ab9a4d?w=800&q=80'
+            ],
             description: 'Bella is a productive water buffalo with excellent milk production. She is gentle, easy to milk, and produces rich, creamy milk perfect for cheese making. She is healthy and has a calm temperament around people.',
             temperament: ['Gentle', 'Productive', 'Calm', 'Easy to handle'],
             healthRecords: [],
@@ -353,7 +384,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'MALE',
             color: 'Light Brown',
             weight: '1100 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1581852017103-68ac65514cf7?w=800&q=80',
+              'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80',
+              'https://images.unsplash.com/photo-1539186607619-df476afe6ff1?w=800&q=80'
+            ],
             description: 'Sultan is a well-trained dromedary camel suitable for riding, tourism, or breeding. He has a calm temperament, is accustomed to people, and has experience giving rides to children and adults. He is healthy and well-adapted to various climates.',
             temperament: ['Calm', 'Well-trained', 'People-friendly', 'Reliable'],
             healthRecords: [],
@@ -391,7 +426,11 @@ export default function MarketplaceDetailsPage() {
             gender: 'FEMALE',
             color: 'Red-brown',
             weight: '6.5 lbs',
-            photos: [],
+            photos: [
+              'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80',
+              'https://images.unsplash.com/photo-1563281577-a7be47e20db9?w=800&q=80',
+              'https://images.unsplash.com/photo-1612170153139-6f881ff067e0?w=800&q=80'
+            ],
             description: 'Penny is an excellent laying hen producing 5-6 large brown eggs per week. She is healthy, friendly, and gets along well with other chickens. Great addition to any backyard flock.',
             temperament: ['Friendly', 'Productive', 'Calm', 'Social'],
             healthRecords: [],
@@ -485,24 +524,32 @@ export default function MarketplaceDetailsPage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white/80 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white/20 mb-6"
             >
-              <div className="h-96 bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center relative">
-                <div className="text-8xl">
-                  {listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
-                   listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
-                   listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
-                   listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
-                   listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
-                   listing.pet.species === 'COW' ? '🐄' :
-                   listing.pet.species === 'HORSE' ? '🐴' :
-                   listing.pet.species === 'GOAT' ? '🐐' :
-                   listing.pet.species === 'SHEEP' ? '🐑' :
-                   listing.pet.species === 'OX' ? '🐂' :
-                   listing.pet.species === 'BUFFALO' ? '🐃' :
-                   listing.pet.species === 'CAMEL' ? '🐪' :
-                   listing.pet.species === 'CHICKEN' ? '🐔' :
-                   listing.pet.species === 'DUCK' ? '🦆' :
-                   listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
-                </div>
+              <div className="h-96 bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center relative overflow-hidden">
+                {listing.pet.photos && listing.pet.photos.length > 0 ? (
+                  <img
+                    src={listing.pet.photos[currentImageIndex]}
+                    alt={listing.pet.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="text-8xl">
+                    {listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
+                     listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
+                     listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
+                     listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
+                     listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
+                     listing.pet.species === 'COW' ? '🐄' :
+                     listing.pet.species === 'HORSE' ? '🐴' :
+                     listing.pet.species === 'GOAT' ? '🐐' :
+                     listing.pet.species === 'SHEEP' ? '🐑' :
+                     listing.pet.species === 'OX' ? '🐂' :
+                     listing.pet.species === 'BUFFALO' ? '🐃' :
+                     listing.pet.species === 'CAMEL' ? '🐪' :
+                     listing.pet.species === 'CHICKEN' ? '🐔' :
+                     listing.pet.species === 'DUCK' ? '🦆' :
+                     listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
+                  </div>
+                )}
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     listing.listingType === 'ADOPTION'
@@ -521,6 +568,29 @@ export default function MarketplaceDetailsPage() {
                   </button>
                 </div>
               </div>
+
+              {/* Image thumbnails */}
+              {listing.pet.photos && listing.pet.photos.length > 1 && (
+                <div className="p-4 bg-white/60 backdrop-blur-sm">
+                  <div className="flex gap-2 overflow-x-auto">
+                    {listing.pet.photos.map((photo, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                          index === currentImageIndex ? 'border-teal-500 scale-105' : 'border-transparent hover:border-gray-300'
+                        }`}
+                      >
+                        <img
+                          src={photo}
+                          alt={`${listing.pet.name} ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             {/* Pet Details */}

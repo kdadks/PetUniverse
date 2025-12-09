@@ -154,38 +154,38 @@ export default function ProviderProfilePage() {
           }
         ],
         gallery: [
-          'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80', // Dog grooming salon
-          'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80', // Groomed poodle
-          'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80', // Dog bath
-          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80', // Brushing dog
-          'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800&q=80', // Golden retriever groomed
-          'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=800&q=80', // Grooming tools
-          'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800&q=80', // Dog haircut
-          'https://images.unsplash.com/photo-1581888227599-779811939961?w=800&q=80', // Professional grooming
+          'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80',
+          'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80',
+          'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80',
+          'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80',
+          'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800&q=80',
+          'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=800&q=80',
+          'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800&q=80',
+          'https://images.unsplash.com/photo-1581888227599-779811939961?w=800&q=80',
         ],
         videos: [
           {
             id: '1',
             title: 'Golden Retriever Full Grooming Session',
-            thumbnail: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=400&q=80',
             url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
           },
           {
             id: '2',
             title: 'De-shedding Treatment Process',
-            thumbnail: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=80',
             url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
           },
           {
             id: '3',
             title: 'Puppy First Grooming Experience',
-            thumbnail: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=400&q=80',
             url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
           },
           {
             id: '4',
             title: 'Show Dog Preparation Tutorial',
-            thumbnail: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&q=80',
+            thumbnail: 'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400&q=80',
             url: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
           }
         ],

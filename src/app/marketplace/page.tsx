@@ -102,7 +102,7 @@ export default function MarketplacePage() {
             age: 2,
             gender: 'MALE',
             color: 'Golden',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=800&q=80'],
             description: 'Friendly and well-trained family dog',
             healthRecords: [],
             vaccinations: []
@@ -129,7 +129,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'FEMALE',
             color: 'White',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1573865526739-10c1dd4e1f43?w=800&q=80'],
             description: 'Sweet and gentle Persian cat',
             healthRecords: [],
             vaccinations: []
@@ -155,7 +155,7 @@ export default function MarketplacePage() {
             age: 2,
             gender: 'MALE',
             color: 'Orange Tabby',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&q=80'],
             description: 'Large and fluffy Maine Coon with gentle personality',
             healthRecords: [],
             vaccinations: []
@@ -182,7 +182,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'UNKNOWN',
             color: 'Orange and White',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=800&q=80'],
             description: 'Beautiful marine clownfish for saltwater aquarium',
             healthRecords: [],
             vaccinations: []
@@ -209,7 +209,7 @@ export default function MarketplacePage() {
             age: 3,
             gender: 'FEMALE',
             color: 'Seal Point',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800&q=80'],
             description: 'Vocal and affectionate Siamese cat',
             healthRecords: [],
             vaccinations: []
@@ -235,7 +235,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'UNKNOWN',
             color: 'Golden',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1520990269312-a0d71b6f6e79?w=800&q=80'],
             description: 'Classic goldfish for freshwater aquarium',
             healthRecords: [],
             vaccinations: []
@@ -262,7 +262,7 @@ export default function MarketplacePage() {
             age: 4,
             gender: 'MALE',
             color: 'Blue Gray',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&q=80'],
             description: 'Calm and dignified British Shorthair',
             healthRecords: [],
             vaccinations: []
@@ -289,7 +289,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'MALE',
             color: 'Multicolor',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=800&q=80'],
             description: 'Stunning male betta with vibrant colors',
             healthRecords: [],
             vaccinations: []
@@ -316,7 +316,7 @@ export default function MarketplacePage() {
             age: 3,
             gender: 'MALE',
             color: 'Brindle',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80'],
             description: 'Playful French Bulldog with great personality',
             healthRecords: [],
             vaccinations: []
@@ -343,7 +343,7 @@ export default function MarketplacePage() {
             age: 2,
             gender: 'FEMALE',
             color: 'Blue Point',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=800&q=80'],
             description: 'Docile and sweet Ragdoll cat',
             healthRecords: [],
             vaccinations: []
@@ -369,7 +369,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'UNKNOWN',
             color: 'Silver',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=800&q=80'],
             description: 'Elegant freshwater angelfish',
             healthRecords: [],
             vaccinations: []
@@ -396,7 +396,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'MALE',
             color: 'Brown',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=800&q=80'],
             description: 'Cute and cuddly Holland Lop rabbit',
             healthRecords: [],
             vaccinations: []
@@ -423,7 +423,7 @@ export default function MarketplacePage() {
             age: 3,
             gender: 'FEMALE',
             color: 'Black and White',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80'],
             description: 'Healthy dairy cow with excellent milk production',
             healthRecords: [],
             vaccinations: []
@@ -450,7 +450,7 @@ export default function MarketplacePage() {
             age: 5,
             gender: 'MALE',
             color: 'Chestnut',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80'],
             description: 'Beautiful Arabian stallion, well-trained',
             healthRecords: [],
             vaccinations: []
@@ -477,7 +477,7 @@ export default function MarketplacePage() {
             age: 2,
             gender: 'FEMALE',
             color: 'White with Brown',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80'],
             description: 'Productive Boer goat for breeding',
             healthRecords: [],
             vaccinations: []
@@ -504,7 +504,7 @@ export default function MarketplacePage() {
             age: 4,
             gender: 'MALE',
             color: 'Black',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1444464666168-49d633b86797?w=800&q=80'],
             description: 'Strong water buffalo for dairy farming',
             healthRecords: [],
             vaccinations: []
@@ -531,7 +531,7 @@ export default function MarketplacePage() {
             age: 3,
             gender: 'FEMALE',
             color: 'White',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80'],
             description: 'Premium Merino sheep with fine wool',
             healthRecords: [],
             vaccinations: []
@@ -558,7 +558,7 @@ export default function MarketplacePage() {
             age: 6,
             gender: 'FEMALE',
             color: 'Tan',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1581852017103-68ac65514cf7?w=800&q=80'],
             description: 'Gentle dromedary camel, well-trained',
             healthRecords: [],
             vaccinations: []
@@ -585,7 +585,7 @@ export default function MarketplacePage() {
             age: 5,
             gender: 'MALE',
             color: 'Gray',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80'],
             description: 'Strong working ox, well-trained',
             healthRecords: [],
             vaccinations: []
@@ -612,7 +612,7 @@ export default function MarketplacePage() {
             age: 1,
             gender: 'FEMALE',
             color: 'Red Brown',
-            photos: [],
+            photos: ['https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80'],
             description: 'Excellent egg-laying hen',
             healthRecords: [],
             vaccinations: []
@@ -683,16 +683,24 @@ export default function MarketplacePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16">
-      <div className="bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-8 overflow-hidden">
+        {/* Background Images */}
+        <div className="absolute inset-0 flex opacity-40">
+          <img src="/images/Adorable Sudsy Australian Shepherd Puppies.png" alt="" className="w-1/3 h-full object-cover" />
+          <img src="/images/Interspecies Friends.png" alt="" className="w-1/3 h-full object-cover" />
+          <img src="/images/nick-fewings-8BV5u6XyCzk-unsplash.jpg" alt="" className="w-1/3 h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-50/40 via-cyan-50/20 to-emerald-50/40" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-3">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-3 drop-shadow">
               Every Pet. Every Family.
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-2">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-2 drop-shadow">
               Find your perfect companion from verified breeders, farms, and shelters
             </p>
-            <span className="text-gray-500 text-sm">{filteredListings.length} pets available</span>
+            <span className="text-gray-600 text-sm font-medium">{filteredListings.length} pets available</span>
           </div>
         </div>
       </div>
@@ -820,24 +828,32 @@ export default function MarketplacePage() {
                 className="bg-white/80 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <div className="text-6xl">
-                      {listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
-                       listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
-                       listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
-                       listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
-                       listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
-                       listing.pet.species === 'COW' ? '🐄' :
-                       listing.pet.species === 'BUFFALO' ? '🐃' :
-                       listing.pet.species === 'CAMEL' ? '🐫' :
-                       listing.pet.species === 'GOAT' ? '🐐' :
-                       listing.pet.species === 'SHEEP' ? '🐑' :
-                       listing.pet.species === 'HORSE' ? '🐴' :
-                       listing.pet.species === 'OX' ? '🐂' :
-                       listing.pet.species === 'CHICKEN' ? '🐔' :
-                       listing.pet.species === 'DUCK' ? '🦆' :
-                       listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
-                    </div>
+                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                    {listing.pet.photos && listing.pet.photos.length > 0 ? (
+                      <img
+                        src={listing.pet.photos[0]}
+                        alt={listing.pet.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="text-6xl">
+                        {listing.pet.species === 'DOG' || listing.pet.species === 'dog' ? '🐕' :
+                         listing.pet.species === 'CAT' || listing.pet.species === 'cat' ? '🐱' :
+                         listing.pet.species === 'BIRD' || listing.pet.species === 'bird' ? '🐦' :
+                         listing.pet.species === 'RABBIT' || listing.pet.species === 'rabbit' ? '🐰' :
+                         listing.pet.species === 'FISH' || listing.pet.species === 'fish' ? '🐠' :
+                         listing.pet.species === 'COW' ? '🐄' :
+                         listing.pet.species === 'BUFFALO' ? '🐃' :
+                         listing.pet.species === 'CAMEL' ? '🐫' :
+                         listing.pet.species === 'GOAT' ? '🐐' :
+                         listing.pet.species === 'SHEEP' ? '🐑' :
+                         listing.pet.species === 'HORSE' ? '🐴' :
+                         listing.pet.species === 'OX' ? '🐂' :
+                         listing.pet.species === 'CHICKEN' ? '🐔' :
+                         listing.pet.species === 'DUCK' ? '🦆' :
+                         listing.pet.species === 'TURKEY' ? '🦃' : '🐾'}
+                      </div>
+                    )}
                   </div>
                   <div className="absolute top-4 left-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${

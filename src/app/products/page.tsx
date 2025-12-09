@@ -85,7 +85,7 @@ export default function ProductsPage() {
           category: 'FOOD',
           description: 'High-quality dry dog food made with real chicken and brown rice. Perfect for adult dogs.',
           brand: 'PetNutrition Pro',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=800&q=80'],
           price: 45.99,
           stockQuantity: 50,
           averageRating: 4.8,
@@ -100,7 +100,7 @@ export default function ProductsPage() {
           category: 'FOOD',
           description: 'Grain-free wet cat food with real tuna and salmon. Rich in protein and omega-3.',
           brand: 'FelineChoice',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1589662804145-dd62f31e7c1f?w=800&q=80'],
           price: 28.99,
           stockQuantity: 65,
           averageRating: 4.9,
@@ -115,7 +115,7 @@ export default function ProductsPage() {
           category: 'FOOD',
           description: 'Nutritious tropical fish flakes with enhanced colors and vitamins for healthy fish.',
           brand: 'AquaNutrition',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=800&q=80'],
           price: 16.99,
           stockQuantity: 85,
           averageRating: 4.6,
@@ -130,7 +130,7 @@ export default function ProductsPage() {
           category: 'TOYS',
           description: 'Extendable feather wand toy that drives cats wild with natural hunting instincts.',
           brand: 'CatPlay',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=800&q=80'],
           price: 14.99,
           stockQuantity: 120,
           averageRating: 4.8,
@@ -145,7 +145,7 @@ export default function ProductsPage() {
           category: 'TOYS',
           description: 'Realistic treasure chest that opens and closes, perfect for fish tank decoration.',
           brand: 'AquaDecor',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=800&q=80'],
           price: 22.99,
           stockQuantity: 45,
           averageRating: 4.5,
@@ -160,7 +160,7 @@ export default function ProductsPage() {
           category: 'TOYS',
           description: 'Mental stimulation toy that keeps dogs engaged and entertained for hours.',
           brand: 'SmartPaws',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80'],
           price: 19.99,
           stockQuantity: 75,
           averageRating: 4.6,
@@ -175,7 +175,7 @@ export default function ProductsPage() {
           category: 'BEDDING',
           description: 'Ultra-soft and comfortable bed perfect for cats who love to sleep in style.',
           brand: 'ComfyPaws',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=800&q=80'],
           price: 68.99,
           stockQuantity: 25,
           averageRating: 4.9,
@@ -190,7 +190,7 @@ export default function ProductsPage() {
           category: 'BEDDING',
           description: 'Cozy enclosed cat bed that provides security and warmth for anxious cats.',
           brand: 'HideawayPets',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1569866593264-60fa153ab53e?w=800&q=80'],
           price: 39.99,
           stockQuantity: 40,
           averageRating: 4.7,
@@ -205,7 +205,7 @@ export default function ProductsPage() {
           category: 'TREATS',
           description: 'Pure freeze-dried tuna treats with no additives. Perfect training reward.',
           brand: 'PureTreats',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1577023311546-cdc07a8454d9?w=800&q=80'],
           price: 18.99,
           stockQuantity: 90,
           averageRating: 4.8,
@@ -220,7 +220,7 @@ export default function ProductsPage() {
           category: 'TREATS',
           description: 'Freeze-dried bloodworms, perfect high-protein treat for tropical fish.',
           brand: 'AquaTreats',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=800&q=80'],
           price: 12.99,
           stockQuantity: 70,
           averageRating: 4.5,
@@ -235,7 +235,7 @@ export default function ProductsPage() {
           category: 'TREATS',
           description: 'All-natural salmon treats packed with omega-3 fatty acids for healthy skin and coat.',
           brand: 'NatureTreats',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?w=800&q=80'],
           price: 12.99,
           stockQuantity: 100,
           averageRating: 4.7,
@@ -250,7 +250,7 @@ export default function ProductsPage() {
           category: 'GROOMING_SUPPLIES',
           description: 'Self-cleaning slicker brush perfect for removing loose fur and preventing matting.',
           brand: 'FelineGroom',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1589662804145-dd62f31e7c1f?w=800&q=80'],
           price: 24.99,
           stockQuantity: 55,
           averageRating: 4.6,
@@ -265,7 +265,7 @@ export default function ProductsPage() {
           category: 'GROOMING_SUPPLIES',
           description: 'Complete water testing kit for pH, ammonia, nitrite, and nitrate levels.',
           brand: 'AquaTest',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1520990269312-a0d71b6f6e79?w=800&q=80'],
           price: 32.99,
           stockQuantity: 35,
           averageRating: 4.7,
@@ -280,7 +280,7 @@ export default function ProductsPage() {
           category: 'GROOMING_SUPPLIES',
           description: 'Complete grooming kit with brushes, nail clippers, and grooming tools.',
           brand: 'GroomPro',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80'],
           price: 89.99,
           stockQuantity: 30,
           averageRating: 4.5,
@@ -295,7 +295,7 @@ export default function ProductsPage() {
           category: 'HEALTH_SUPPLEMENTS',
           description: 'Natural calming supplement with L-theanine and chamomile for anxious cats.',
           brand: 'CalmCat',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80'],
           price: 26.99,
           stockQuantity: 45,
           averageRating: 4.4,
@@ -310,7 +310,7 @@ export default function ProductsPage() {
           category: 'ACCESSORIES',
           description: 'High-efficiency aquarium filter for tanks up to 50 gallons with bio-media.',
           brand: 'ClearWater',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=800&q=80'],
           price: 54.99,
           stockQuantity: 25,
           averageRating: 4.8,
@@ -325,7 +325,7 @@ export default function ProductsPage() {
           category: 'ACCESSORIES',
           description: 'Breakaway safety collar with bell and ID tag holder. Adjustable and comfortable.',
           brand: 'SafePaws',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&q=80'],
           price: 8.99,
           stockQuantity: 150,
           averageRating: 4.3,
@@ -340,7 +340,7 @@ export default function ProductsPage() {
           category: 'HEALTH_SUPPLEMENTS',
           description: 'Glucosamine and chondroitin supplement for joint health and mobility support.',
           brand: 'VetHealth',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=800&q=80'],
           price: 34.99,
           stockQuantity: 60,
           averageRating: 4.4,
@@ -356,7 +356,7 @@ export default function ProductsPage() {
           category: 'CATTLE_FEED',
           description: 'High-protein cattle feed with balanced nutrition for optimal growth and milk production.',
           brand: 'FarmGold',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80'],
           price: 45.99,
           stockQuantity: 200,
           averageRating: 4.8,
@@ -371,7 +371,7 @@ export default function ProductsPage() {
           category: 'POULTRY_FEED',
           description: 'Complete nutrition for laying hens, promotes strong shells and consistent egg production.',
           brand: 'ChickenChoice',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80'],
           price: 32.99,
           stockQuantity: 180,
           averageRating: 4.7,
@@ -386,7 +386,7 @@ export default function ProductsPage() {
           category: 'MINERAL_SUPPLEMENTS',
           description: 'Essential minerals and vitamins for cattle, goats, and sheep health.',
           brand: 'MineralPro',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80'],
           price: 58.99,
           stockQuantity: 95,
           averageRating: 4.9,
@@ -401,7 +401,7 @@ export default function ProductsPage() {
           category: 'MILKING_EQUIPMENT',
           description: 'Efficient portable milking machine for cows, goats, and sheep. Easy to clean.',
           brand: 'DairyTech',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1605522561255-3ac1b6e0c2e6?w=800&q=80'],
           price: 189.99,
           stockQuantity: 25,
           averageRating: 4.6,
@@ -416,7 +416,7 @@ export default function ProductsPage() {
           category: 'SADDLES_TACK',
           description: 'Premium leather western saddle with comfortable seat and durable construction.',
           brand: 'EquiPro',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80'],
           price: 450.00,
           stockQuantity: 15,
           averageRating: 4.8,
@@ -431,7 +431,7 @@ export default function ProductsPage() {
           category: 'HALTERS_LEADS',
           description: 'Heavy-duty rope halter with 10ft lead rope, perfect for cattle and horses.',
           brand: 'StrongHold',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1551817958-11e0f7bbea4a?w=800&q=80'],
           price: 28.99,
           stockQuantity: 85,
           averageRating: 4.7,
@@ -446,7 +446,7 @@ export default function ProductsPage() {
           category: 'VETERINARY_MEDICINES',
           description: 'Broad-spectrum dewormer for cattle, sheep, goats, and horses.',
           brand: 'VetMed Pro',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80'],
           price: 42.99,
           stockQuantity: 55,
           averageRating: 4.9,
@@ -461,7 +461,7 @@ export default function ProductsPage() {
           category: 'FARM_TOOLS',
           description: 'Weather-resistant mineral feeder with covered design to keep minerals dry.',
           brand: 'FarmEssentials',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80'],
           price: 65.99,
           stockQuantity: 40,
           averageRating: 4.5,
@@ -476,7 +476,7 @@ export default function ProductsPage() {
           category: 'GROOMING_SUPPLIES',
           description: 'Professional 9-piece grooming kit including brushes, hoof pick, and curry comb.',
           brand: 'EquiCare',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80'],
           price: 75.99,
           stockQuantity: 50,
           averageRating: 4.8,
@@ -491,7 +491,7 @@ export default function ProductsPage() {
           category: 'MINERAL_SUPPLEMENTS',
           description: 'Complete vitamin and mineral supplement for dairy and beef cattle.',
           brand: 'NutriBoost',
-          images: [],
+          images: ['https://images.unsplash.com/photo-1444464666168-49d633b86797?w=800&q=80'],
           price: 68.99,
           stockQuantity: 70,
           averageRating: 4.7,
@@ -589,17 +589,25 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 -mt-16">
-      <div className="bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-8 overflow-hidden">
+        {/* Background Images */}
+        <div className="absolute inset-0 flex opacity-40">
+          <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=800&q=80" alt="" className="w-1/3 h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1615751072497-5f5169febe17?w=800&q=80" alt="" className="w-1/3 h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="" className="w-1/3 h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-50/40 via-cyan-50/20 to-emerald-50/40" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="text-center flex-1">
-              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-3">
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-3 drop-shadow">
                 Every Product. Every Need.
               </h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-2">
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-2 drop-shadow">
                 Premium supplies and essentials for every pet and livestock
               </p>
-              <span className="text-gray-500 text-sm">{filteredProducts.length} products available</span>
+              <span className="text-gray-600 text-sm font-medium">{filteredProducts.length} products available</span>
             </div>
             <div className="flex items-center space-x-4 absolute right-8">
               <div className="relative">
@@ -717,8 +725,16 @@ export default function ProductsPage() {
                 className="bg-white/80 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <Package className="h-16 w-16 text-gray-400" />
+                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                    {product.images && product.images.length > 0 ? (
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Package className="h-16 w-16 text-gray-400" />
+                    )}
                   </div>
                   <button className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300">
                     <Heart className="h-5 w-5" />
