@@ -330,18 +330,18 @@ export default function GlossyHeader() {
           >
             {/* Backdrop */}
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={toggleMenu} />
-            
+
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="relative mx-4 mt-2"
+              className="relative mx-4 mt-2 max-h-[calc(100vh-100px)] overflow-y-auto"
             >
               <div className="bg-teal-50/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-teal-100/50 overflow-hidden">
                 {/* Gradient top border */}
                 <div className="h-1 bg-gradient-to-r from-teal-400 via-cyan-500 to-emerald-500" />
-                
+
                 <div className="p-4 space-y-2">
                   {navLinks.map((link, index) => (
                     <motion.div

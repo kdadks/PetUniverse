@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { useParams, useRouter } from 'next/navigation'
+import Image from 'next/image'
 import {
   Star,
   Clock,
@@ -873,11 +874,17 @@ export default function ServiceDetailsPage() {
                 <h2 className="text-xl font-bold text-gray-900 mb-4">Gallery</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {service.gallery.map((image, index) => (
-                    <div key={index} className="aspect-square rounded-lg overflow-hidden">
-                      <img
+                    <div key={index} className="aspect-square rounded-lg overflow-hidden relative">
+                      <Image
                         src={image}
                         alt={`${service.name} ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover hover:scale-110 transition-transform duration-300"
+                        priority={index < 2}
+                        quality={75}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                       />
                     </div>
                   ))}

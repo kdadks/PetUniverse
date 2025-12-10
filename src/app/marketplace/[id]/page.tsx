@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { useParams, useRouter } from 'next/navigation'
+import Image from 'next/image'
 import {
   Heart,
   Star,
@@ -526,10 +527,16 @@ export default function MarketplaceDetailsPage() {
             >
               <div className="h-96 bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center relative overflow-hidden">
                 {listing.pet.photos && listing.pet.photos.length > 0 ? (
-                  <img
+                  <Image
                     src={listing.pet.photos[currentImageIndex]}
                     alt={listing.pet.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 66vw"
+                    className="object-cover"
+                    priority
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                   />
                 ) : (
                   <div className="text-8xl">
@@ -577,14 +584,19 @@ export default function MarketplaceDetailsPage() {
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                        className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                           index === currentImageIndex ? 'border-teal-500 scale-105' : 'border-transparent hover:border-gray-300'
                         }`}
                       >
-                        <img
+                        <Image
                           src={photo}
                           alt={`${listing.pet.name} ${index + 1}`}
-                          className="w-full h-full object-cover"
+                          fill
+                          sizes="80px"
+                          className="object-cover"
+                          quality={60}
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                         />
                       </button>
                     ))}

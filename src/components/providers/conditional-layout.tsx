@@ -8,16 +8,18 @@ import { ReactNode } from 'react'
 export default function ConditionalLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
-  // Check if current route is an admin route
+  // Check if current route is an admin or provider dashboard route
   const isAdminRoute = pathname?.startsWith('/admin')
+  const isProviderDashboardRoute = pathname?.startsWith('/provider/dashboard')
+  const shouldHideHeaderFooter = isAdminRoute || isProviderDashboardRoute
 
   return (
     <>
-      {!isAdminRoute && <GlossyHeader />}
-      <main className={isAdminRoute ? '' : 'pt-16'}>
+      {!shouldHideHeaderFooter && <GlossyHeader />}
+      <main className={shouldHideHeaderFooter ? '' : 'pt-16'}>
         {children}
       </main>
-      {!isAdminRoute && <GlossyFooter />}
+      {!shouldHideHeaderFooter && <GlossyFooter />}
     </>
   )
 }

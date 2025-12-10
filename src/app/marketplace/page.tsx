@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Search,
   Heart,
@@ -686,9 +687,45 @@ export default function MarketplacePage() {
       <div className="relative bg-gradient-to-r from-teal-100/80 via-cyan-100/80 to-emerald-100/80 backdrop-blur-sm shadow-lg pt-24 pb-8 overflow-hidden">
         {/* Background Images */}
         <div className="absolute inset-0 flex opacity-40">
-          <img src="/images/Adorable Sudsy Australian Shepherd Puppies.png" alt="" className="w-1/3 h-full object-cover" />
-          <img src="/images/Interspecies Friends.png" alt="" className="w-1/3 h-full object-cover" />
-          <img src="/images/nick-fewings-8BV5u6XyCzk-unsplash.jpg" alt="" className="w-1/3 h-full object-cover" />
+          <div className="relative w-1/3 h-full">
+            <Image
+              src="/images/Adorable Sudsy Australian Shepherd Puppies.png"
+              alt=""
+              fill
+              sizes="33vw"
+              className="object-cover"
+              priority
+              quality={60}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+            />
+          </div>
+          <div className="relative w-1/3 h-full">
+            <Image
+              src="/images/Interspecies Friends.png"
+              alt=""
+              fill
+              sizes="33vw"
+              className="object-cover"
+              priority
+              quality={60}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+            />
+          </div>
+          <div className="relative w-1/3 h-full">
+            <Image
+              src="/images/nick-fewings-8BV5u6XyCzk-unsplash.jpg"
+              alt=""
+              fill
+              sizes="33vw"
+              className="object-cover"
+              priority
+              quality={60}
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+            />
+          </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-teal-50/40 via-cyan-50/20 to-emerald-50/40" />
 
@@ -828,12 +865,17 @@ export default function MarketplacePage() {
                 className="bg-white/80 backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                  <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden relative">
                     {listing.pet.photos && listing.pet.photos.length > 0 ? (
-                      <img
+                      <Image
                         src={listing.pet.photos[0]}
                         alt={listing.pet.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                        quality={70}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
                       />
                     ) : (
                       <div className="text-6xl">
